@@ -4,9 +4,9 @@ import "src/db/database"
 
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send("<h1>Sevika</h1>");
-})
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use(authRouter)
 
