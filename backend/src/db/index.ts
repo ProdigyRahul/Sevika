@@ -1,6 +1,6 @@
 import { connect } from "mongoose"
 
-const uri = 'mongodb+srv://melC14:Melody$14@cluster0.v7ykago.mongodb.net/backend';
+const uri = 'mongodb+srv://melC14:Melody$14@cluster0.v7ykago.mongodb.net/sevika';
 
 
 

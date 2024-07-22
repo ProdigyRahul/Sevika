@@ -1,44 +1,31 @@
-import { Schema, models, Document } from 'mongoose'
+import { Schema, model, Document } from "mongoose"
 
 interface volunteerDocument extends Document {
-    firstName: String,
-    lastName: String,
-    email: String,
-    password: String,
-    city: String,
-    referral: boolean,
-    acceptedTerms: boolean
+    reasonToJoin: string;
+    foundThrough: string;
+    contributions: string;
+    categories: string;
 }
 
 const volunteerSchema = new Schema<volunteerDocument, {}>({
-    firstName: {
+    reasonToJoin: {
         type: String,
         required: true,
     },
-    lastName: {
+    foundThrough: {
+        type: String,
+        required: true
+    },
+    contributions: {
         type: String,
         required: true,
     },
-    email: {
+    categories: {
         type: String,
         required: true,
-        unique: true,
-    },
-    password: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    city: {
-        type: String,
-        required: true,
-    },
-    referral: {
-        type: Boolean,
-        required: true,
-    },
-    acceptedTerms: {
-        type: Boolean,
-        required: true,
+        max: 3,
     }
 })
+
+const VolunteerModel = model("Volunterr", volunteerSchema)
+export default VolunteerModel;
