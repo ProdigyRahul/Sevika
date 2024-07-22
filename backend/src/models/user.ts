@@ -9,7 +9,7 @@ interface UserDocument extends Document {
     hasReferral: string;
     isVerified: boolean;
     verificationToken: string;
-    roles: { type: [String], default: ['member'] },
+    roles: string;
     termsAccepted: boolean;
     privacyPolicy: boolean;
     profilePicture: string;
@@ -44,12 +44,44 @@ const userSchema = new Schema<UserDocument, {}>({
         unique: true,
         required: true,
     },
+    profilePicture: {
+        type: String,
+        required: true,
+
+    },
+    bio: {
+        type: String,
+        required: true,
+        maxlength: 100,
+    },
+    skills: {
+        type: String,
+        required: true,
+    },
     hasReferral: {
         type: String,
         unique: true,
         required: true,
     },
     isVerified: {
+        type: Boolean,
+        required: true,
+    },
+    verificationToken: {
+        type: String,
+        required: true,
+    },
+    roles: {
+        type: String,
+        default: 'member',
+    },
+    termsAccepted: {
+        type: Boolean,
+        required: true,
+    },
+    privacyPolicy: {
+        type: Boolean,
+        required: true,
 
     }
 })
