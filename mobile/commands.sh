@@ -1,0 +1,2 @@
+npm i @reduxjs/toolkit lottie-react-native react-native-heroicons @react-navigation/native @react-navigation/native-stack react-native-safe-area-context react-native-screens react-native-pager-view react-native-reanimated react-native-gesture-handler @react-native-community/masked-view react-native-mmkv react-native-modal react-native-responsive-fontsize
+npm i react-native-svg react-native-svg-transformer react-redux redux redux-persist
