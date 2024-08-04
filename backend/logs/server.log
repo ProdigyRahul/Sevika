@@ -1,0 +1,278 @@
+Sun Aug 04 2024 20:39:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is not set. Using default value.[39m
+Sun Aug 04 2024 20:39:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is not set. Using default value.[39m
+Sun Aug 04 2024 20:39:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is not set. Using default value.[39m
+Sun Aug 04 2024 20:39:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is not set. Using default value.[39m
+Sun Aug 04 2024 20:39:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is not set. Using default value.[39m
+Sun Aug 04 2024 20:39:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is not set. Using default value.[39m
+Sun Aug 04 2024 20:39:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is not set. Using default value.[39m
+Sun Aug 04 2024 20:39:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is not set. Using default value.[39m
+Sun Aug 04 2024 20:39:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is not set. Using default value.[39m
+Sun Aug 04 2024 20:39:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is not set. Using default value.[39m
+Sun Aug 04 2024 20:39:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is not set. Using default value.[39m
+Sun Aug 04 2024 20:39:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is not set. Using default value.[39m
+Sun Aug 04 2024 20:39:15 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 21:16:07 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:07 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:07 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Sun Aug 04 2024 21:16:07 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:07 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:07 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:07 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:07 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:07 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:07 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:07 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:07 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:07 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 21:16:40 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:40 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:40 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Sun Aug 04 2024 21:16:40 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:40 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:40 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:40 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:40 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:40 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:40 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:40 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:40 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is not set. Using default value.[39m
+Sun Aug 04 2024 21:16:40 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 21:16:40 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Sun Aug 04 2024 21:19:28 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is properly configured.[39m
+Sun Aug 04 2024 21:19:28 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is properly configured.[39m
+Sun Aug 04 2024 21:19:28 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Sun Aug 04 2024 21:19:28 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is properly configured.[39m
+Sun Aug 04 2024 21:19:28 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 21:19:28 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is not set. Using default value.[39m
+Sun Aug 04 2024 21:19:28 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is not set. Using default value.[39m
+Sun Aug 04 2024 21:19:28 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 21:19:28 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is properly configured.[39m
+Sun Aug 04 2024 21:19:28 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is properly configured.[39m
+Sun Aug 04 2024 21:19:28 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is properly configured.[39m
+Sun Aug 04 2024 21:19:28 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is properly configured.[39m
+Sun Aug 04 2024 21:19:28 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 21:19:29 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Sun Aug 04 2024 21:57:51 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is properly configured.[39m
+Sun Aug 04 2024 21:57:51 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is properly configured.[39m
+Sun Aug 04 2024 21:57:51 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Sun Aug 04 2024 21:57:51 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is properly configured.[39m
+Sun Aug 04 2024 21:57:51 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 21:57:51 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is properly configured.[39m
+Sun Aug 04 2024 21:57:51 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is properly configured.[39m
+Sun Aug 04 2024 21:57:51 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 21:57:51 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is properly configured.[39m
+Sun Aug 04 2024 21:57:51 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is properly configured.[39m
+Sun Aug 04 2024 21:57:51 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is properly configured.[39m
+Sun Aug 04 2024 21:57:51 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is properly configured.[39m
+Sun Aug 04 2024 21:57:51 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 21:57:52 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Sun Aug 04 2024 22:01:33 [AttendX-Development] [31merror[39m: [31mSignup error: User validation failed: termsAcccepted: Path `termsAcccepted` is required.[39m
+Sun Aug 04 2024 22:02:04 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is properly configured.[39m
+Sun Aug 04 2024 22:02:04 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is properly configured.[39m
+Sun Aug 04 2024 22:02:04 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Sun Aug 04 2024 22:02:04 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:02:04 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:02:04 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is properly configured.[39m
+Sun Aug 04 2024 22:02:04 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is properly configured.[39m
+Sun Aug 04 2024 22:02:04 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:02:04 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is properly configured.[39m
+Sun Aug 04 2024 22:02:04 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is properly configured.[39m
+Sun Aug 04 2024 22:02:04 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is properly configured.[39m
+Sun Aug 04 2024 22:02:04 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:02:04 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 22:02:05 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Sun Aug 04 2024 22:02:08 [AttendX-Development] [31merror[39m: [31mSignup error: Failed to send verification email[39m
+Sun Aug 04 2024 22:05:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is properly configured.[39m
+Sun Aug 04 2024 22:05:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is properly configured.[39m
+Sun Aug 04 2024 22:05:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Sun Aug 04 2024 22:05:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:05:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:05:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is properly configured.[39m
+Sun Aug 04 2024 22:05:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is properly configured.[39m
+Sun Aug 04 2024 22:05:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:05:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is properly configured.[39m
+Sun Aug 04 2024 22:05:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is properly configured.[39m
+Sun Aug 04 2024 22:05:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is properly configured.[39m
+Sun Aug 04 2024 22:05:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:05:38 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 22:05:38 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Sun Aug 04 2024 22:05:42 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is properly configured.[39m
+Sun Aug 04 2024 22:05:42 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is properly configured.[39m
+Sun Aug 04 2024 22:05:42 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Sun Aug 04 2024 22:05:42 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:05:42 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:05:42 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is properly configured.[39m
+Sun Aug 04 2024 22:05:42 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is properly configured.[39m
+Sun Aug 04 2024 22:05:42 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:05:42 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is properly configured.[39m
+Sun Aug 04 2024 22:05:42 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is properly configured.[39m
+Sun Aug 04 2024 22:05:42 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is properly configured.[39m
+Sun Aug 04 2024 22:05:42 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:05:42 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 22:05:43 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Sun Aug 04 2024 22:06:54 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is properly configured.[39m
+Sun Aug 04 2024 22:06:54 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is properly configured.[39m
+Sun Aug 04 2024 22:06:54 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Sun Aug 04 2024 22:06:54 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:06:54 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:06:54 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is properly configured.[39m
+Sun Aug 04 2024 22:06:54 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is properly configured.[39m
+Sun Aug 04 2024 22:06:54 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:06:54 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is properly configured.[39m
+Sun Aug 04 2024 22:06:54 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is properly configured.[39m
+Sun Aug 04 2024 22:06:54 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is properly configured.[39m
+Sun Aug 04 2024 22:06:54 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:06:54 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 22:06:55 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Sun Aug 04 2024 22:07:04 [AttendX-Development] [33mwarn[39m: [33mVerification email sent successfully to rahulmistry032@gmail.com[39m
+Sun Aug 04 2024 22:07:13 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is properly configured.[39m
+Sun Aug 04 2024 22:07:13 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is properly configured.[39m
+Sun Aug 04 2024 22:07:13 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Sun Aug 04 2024 22:07:13 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:07:13 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:07:13 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is properly configured.[39m
+Sun Aug 04 2024 22:07:13 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is properly configured.[39m
+Sun Aug 04 2024 22:07:13 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:07:13 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is properly configured.[39m
+Sun Aug 04 2024 22:07:13 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is properly configured.[39m
+Sun Aug 04 2024 22:07:13 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is properly configured.[39m
+Sun Aug 04 2024 22:07:13 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:07:13 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 22:07:14 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Sun Aug 04 2024 22:09:03 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is properly configured.[39m
+Sun Aug 04 2024 22:09:03 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is properly configured.[39m
+Sun Aug 04 2024 22:09:03 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Sun Aug 04 2024 22:09:03 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:09:03 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:09:03 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is properly configured.[39m
+Sun Aug 04 2024 22:09:03 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is properly configured.[39m
+Sun Aug 04 2024 22:09:03 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:09:03 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is properly configured.[39m
+Sun Aug 04 2024 22:09:03 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is properly configured.[39m
+Sun Aug 04 2024 22:09:03 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is properly configured.[39m
+Sun Aug 04 2024 22:09:03 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:09:03 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 22:09:03 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Sun Aug 04 2024 22:10:08 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is properly configured.[39m
+Sun Aug 04 2024 22:10:08 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is properly configured.[39m
+Sun Aug 04 2024 22:10:08 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Sun Aug 04 2024 22:10:08 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:10:08 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:10:08 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is properly configured.[39m
+Sun Aug 04 2024 22:10:08 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is properly configured.[39m
+Sun Aug 04 2024 22:10:08 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:10:08 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is properly configured.[39m
+Sun Aug 04 2024 22:10:08 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is properly configured.[39m
+Sun Aug 04 2024 22:10:08 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is properly configured.[39m
+Sun Aug 04 2024 22:10:08 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:10:08 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 22:10:09 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Sun Aug 04 2024 22:10:45 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is properly configured.[39m
+Sun Aug 04 2024 22:10:45 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is properly configured.[39m
+Sun Aug 04 2024 22:10:45 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Sun Aug 04 2024 22:10:45 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:10:45 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:10:45 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is properly configured.[39m
+Sun Aug 04 2024 22:10:45 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is properly configured.[39m
+Sun Aug 04 2024 22:10:45 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:10:45 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is properly configured.[39m
+Sun Aug 04 2024 22:10:45 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is properly configured.[39m
+Sun Aug 04 2024 22:10:45 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is properly configured.[39m
+Sun Aug 04 2024 22:10:45 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:10:45 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 22:10:46 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Sun Aug 04 2024 22:10:53 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is properly configured.[39m
+Sun Aug 04 2024 22:10:53 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is properly configured.[39m
+Sun Aug 04 2024 22:10:53 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Sun Aug 04 2024 22:10:53 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:10:53 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:10:53 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is properly configured.[39m
+Sun Aug 04 2024 22:10:53 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is properly configured.[39m
+Sun Aug 04 2024 22:10:53 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:10:53 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is properly configured.[39m
+Sun Aug 04 2024 22:10:53 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is properly configured.[39m
+Sun Aug 04 2024 22:10:53 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is properly configured.[39m
+Sun Aug 04 2024 22:10:53 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:10:53 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 22:10:54 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Sun Aug 04 2024 22:11:12 [AttendX-Development] [33mwarn[39m: [33mVerification email sent successfully to rahulmistry032@gmail.com[39m
+Sun Aug 04 2024 22:11:21 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is properly configured.[39m
+Sun Aug 04 2024 22:11:21 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is properly configured.[39m
+Sun Aug 04 2024 22:11:21 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Sun Aug 04 2024 22:11:21 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:11:21 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:11:21 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is properly configured.[39m
+Sun Aug 04 2024 22:11:21 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is properly configured.[39m
+Sun Aug 04 2024 22:11:21 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:11:21 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is properly configured.[39m
+Sun Aug 04 2024 22:11:21 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is properly configured.[39m
+Sun Aug 04 2024 22:11:21 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is properly configured.[39m
+Sun Aug 04 2024 22:11:21 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:11:21 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 22:11:22 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Sun Aug 04 2024 22:14:16 [AttendX-Development] [33mwarn[39m: [33mVerification email sent successfully to rahulmistry032@gmail.com[39m
+Sun Aug 04 2024 22:17:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is properly configured.[39m
+Sun Aug 04 2024 22:17:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is properly configured.[39m
+Sun Aug 04 2024 22:17:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Sun Aug 04 2024 22:17:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:17:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:17:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is properly configured.[39m
+Sun Aug 04 2024 22:17:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is properly configured.[39m
+Sun Aug 04 2024 22:17:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:17:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is properly configured.[39m
+Sun Aug 04 2024 22:17:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is properly configured.[39m
+Sun Aug 04 2024 22:17:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is properly configured.[39m
+Sun Aug 04 2024 22:17:15 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:17:15 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 22:17:16 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Sun Aug 04 2024 22:17:30 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is properly configured.[39m
+Sun Aug 04 2024 22:17:30 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is properly configured.[39m
+Sun Aug 04 2024 22:17:30 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Sun Aug 04 2024 22:17:30 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:17:30 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:17:30 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is properly configured.[39m
+Sun Aug 04 2024 22:17:30 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is properly configured.[39m
+Sun Aug 04 2024 22:17:30 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:17:30 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is properly configured.[39m
+Sun Aug 04 2024 22:17:30 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is properly configured.[39m
+Sun Aug 04 2024 22:17:30 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is properly configured.[39m
+Sun Aug 04 2024 22:17:30 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:17:30 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 22:17:31 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Sun Aug 04 2024 22:17:34 [AttendX-Development] [36minfo[39m: [36mAttempting to verify email for user undefined with token 727744[39m
+Sun Aug 04 2024 22:17:34 [AttendX-Development] [33mwarn[39m: [33mInvalid or expired verification code for user undefined[39m
+Sun Aug 04 2024 22:18:16 [AttendX-Development] [33mwarn[39m: [33mVerification email sent successfully to rahulmistry032@gmail.com[39m
+Sun Aug 04 2024 22:18:28 [AttendX-Development] [36minfo[39m: [36mAttempting to verify email for user undefined with token 468472[39m
+Sun Aug 04 2024 22:18:28 [AttendX-Development] [33mwarn[39m: [33mInvalid or expired verification code for user undefined[39m
+Sun Aug 04 2024 22:18:57 [AttendX-Development] [36minfo[39m: [36mAttempting to verify email for user 66afb0cc1a15454d03b1b272 with token 468472[39m
+Sun Aug 04 2024 22:18:58 [AttendX-Development] [36minfo[39m: [36mEmail verified successfully for user 66afb0cc1a15454d03b1b272[39m
+Sun Aug 04 2024 22:22:34 [AttendX-Development] [33mwarn[39m: [33mPassword reset email sent successfully to rahulmistry032@gmail.com[39m
+Sun Aug 04 2024 22:22:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is properly configured.[39m
+Sun Aug 04 2024 22:22:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is properly configured.[39m
+Sun Aug 04 2024 22:22:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Sun Aug 04 2024 22:22:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:22:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:22:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is properly configured.[39m
+Sun Aug 04 2024 22:22:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is properly configured.[39m
+Sun Aug 04 2024 22:22:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:22:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is properly configured.[39m
+Sun Aug 04 2024 22:22:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is properly configured.[39m
+Sun Aug 04 2024 22:22:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is properly configured.[39m
+Sun Aug 04 2024 22:22:38 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:22:38 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 22:22:39 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Sun Aug 04 2024 22:23:06 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is properly configured.[39m
+Sun Aug 04 2024 22:23:06 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is properly configured.[39m
+Sun Aug 04 2024 22:23:06 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Sun Aug 04 2024 22:23:06 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:23:06 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:23:06 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is properly configured.[39m
+Sun Aug 04 2024 22:23:06 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is properly configured.[39m
+Sun Aug 04 2024 22:23:06 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is properly configured.[39m
+Sun Aug 04 2024 22:23:06 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is properly configured.[39m
+Sun Aug 04 2024 22:23:06 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is properly configured.[39m
+Sun Aug 04 2024 22:23:06 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is properly configured.[39m
+Sun Aug 04 2024 22:23:06 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is properly configured.[39m
+Sun Aug 04 2024 22:23:06 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Sun Aug 04 2024 22:23:07 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Sun Aug 04 2024 22:23:17 [AttendX-Development] [33mwarn[39m: [33mPassword reset email sent successfully to rahulmistry032@gmail.com[39m
