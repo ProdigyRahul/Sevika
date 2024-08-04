@@ -71,26 +71,27 @@ const LoginScreen = () => {
                 </Text>
               </TouchableOpacity>
             </View>
+            <View style={styles.spacer} />
+            <View style={styles.socialLoginContainer}>
+              <View style={styles.divider}>
+                <View style={styles.dividerLine} />
+                <Text style={styles.orContinueWith}>or continue with</Text>
+                <View style={styles.dividerLine} />
+              </View>
+              <View style={styles.socialIconsContainer}>
+                <TouchableOpacity style={styles.socialIcon}>
+                  <Image source={Google_Logo} style={styles.socialLogo} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.socialIcon}>
+                  <Image source={Facebook_Logo} style={styles.socialLogo} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.socialIcon}>
+                  <Image source={Apple_Logo} style={styles.socialLogo} />
+                </TouchableOpacity>
+              </View>
+            </View>
           </View>
         </ScrollView>
-        <View style={styles.socialLoginContainer}>
-          <View style={styles.divider}>
-            <View style={styles.dividerLine} />
-            <Text style={styles.orContinueWith}>or continue with</Text>
-            <View style={styles.dividerLine} />
-          </View>
-          <View style={styles.socialIconsContainer}>
-            <TouchableOpacity style={styles.socialIcon}>
-              <Image source={Google_Logo} style={styles.socialLogo} />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.socialIcon}>
-              <Image source={Facebook_Logo} style={styles.socialLogo} />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.socialIcon}>
-              <Image source={Apple_Logo} style={styles.socialLogo} />
-            </TouchableOpacity>
-          </View>
-        </View>
       </KeyboardAvoidingView>
     </Wrapper>
   );
@@ -107,6 +108,11 @@ const styles = StyleSheet.create({
   mainContent: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingBottom: 20,
+  },
+  spacer: {
+    flex: 1,
   },
   logoContainer: {
     marginTop: 10,
@@ -212,9 +218,7 @@ const styles = StyleSheet.create({
   socialLoginContainer: {
     width: '100%',
     alignItems: 'center',
-    position: 'absolute',
-    bottom: 20,
-    paddingHorizontal: 20,
+    marginTop: 20,
   },
 
   divider: {
