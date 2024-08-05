@@ -21,6 +21,27 @@ export const login = async (email, password) => {
   }
 };
 
+export const googleSignIn = async googleUser => {
+  try {
+    const response = await axios.post(`${API_URL}/auth/google-signin`, {
+      googleId: googleUser.user.id,
+      email: googleUser.user.email,
+      firstName: googleUser.user.givenName,
+      lastName: googleUser.user.familyName,
+      photoURL: googleUser.user.photo,
+    });
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      throw error.response.data;
+    } else if (error.request) {
+      throw new Error('No response received from the server');
+    } else {
+      throw new Error('Error setting up the request');
+    }
+  }
+};
+
 export const signup = async (email, password) => {
   try {
     const response = await axios.post(`${API_URL}/signup`, {email, password});

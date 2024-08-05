@@ -20,7 +20,6 @@ import {defaultColors} from '../constants/Colors';
 import {deviceWidth} from '../constants/Scaling';
 import {useAuth} from '../hooks/useAuth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import auth from '@react-native-firebase/auth';
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -29,7 +28,7 @@ const LoginScreen = ({navigation}) => {
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const {login} = useAuth();
+  const {login, googleSignIn} = useAuth();
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -67,21 +66,14 @@ const LoginScreen = ({navigation}) => {
     }
   };
 
-  const onGoogleButtonPress = async () => {
+  const handleGoogleSignIn = async () => {
     try {
-      await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
-      const {idToken} = await GoogleSignin.signIn();
-      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-      const userCredential = await auth().signInWithCredential(
-        googleCredential,
-      );
-      console.log('Signed in with Google!', userCredential.user);
+      await googleSignIn();
     } catch (error) {
-      console.error('Google Sign-In Error:', error);
-      Alert.alert('Google Sign-In Failed', error.message);
+      console.log('Google Sign-In Error:', error);
+      // Alert.alert('Google Sign-In Failed', error.message);
     }
   };
-
   return (
     <Wrapper style={styles.wrapper}>
       <KeyboardAvoidingView
@@ -145,7 +137,7 @@ const LoginScreen = ({navigation}) => {
           <View style={styles.socialIconsContainer}>
             <TouchableOpacity
               style={styles.socialIcon}
-              onPress={onGoogleButtonPress}>
+              onPress={handleGoogleSignIn}>
               <Image source={Google_Logo} style={styles.socialLogo} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.socialIcon}>

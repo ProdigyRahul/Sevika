@@ -8,6 +8,8 @@ import {
   updatePasswordController,
   isAuthController,
   logoutController,
+  googleSignInController,
+  completeProfileController,
 } from "@/controllers/auth.controller";
 
 const authRouter = Router();
@@ -39,6 +41,20 @@ authRouter.post("/re-verify-email", reVerifyEmailController);
  * @access Public
  */
 authRouter.post("/login", loginController);
+
+/**
+ * @route POST /api/v1/auth/google-signin
+ * @description Authenticate user with Google
+ * @access Public
+ */
+authRouter.post("/google-signin", googleSignInController);
+
+/**
+ * @route POST /api/v1/auth/complete-profile
+ * @description Complete user profile after Google Sign-In
+ * @access Private
+ */
+authRouter.post("/complete-profile", completeProfileController);
 
 /**
  * @route POST /api/v1/auth/forget-password

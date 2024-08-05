@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   View,
   Text,
@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Platform,
+  Alert,
 } from 'react-native';
 import Wrapper from '../components/Wrapper';
 import Sevika_Logo from '../assets/images/Sevika-logo.png';
@@ -17,6 +18,8 @@ import Facebook_Logo from '../assets/images/facebook-logo.png';
 import Apple_Logo from '../assets/images/apple-logo.png';
 import {defaultColors} from '../constants/Colors';
 import {deviceWidth} from '../constants/Scaling';
+import {useAuth} from '../hooks/useAuth';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 const SignupScreen = ({navigation}) => {
   const [isEmailFocused, setIsEmailFocused] = useState(false);
@@ -25,6 +28,14 @@ const SignupScreen = ({navigation}) => {
     useState(false);
   const scrollViewRef = useRef(null);
   const signUpButtonRef = useRef(null);
+  const {googleSignIn} = useAuth();
+
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '443401979985-jumir08cfrt97p2370p2f6qat6qifhu7.apps.googleusercontent.com',
+    });
+  }, []);
 
   const handleInputFocus = inputName => {
     if (inputName === 'email') setIsEmailFocused(true);
@@ -42,6 +53,15 @@ const SignupScreen = ({navigation}) => {
     if (inputName === 'email') setIsEmailFocused(false);
     if (inputName === 'password') setIsPasswordFocused(false);
     if (inputName === 'confirmPassword') setIsConfirmPasswordFocused(false);
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log('Google Sign-In Error:', error);
+      // Alert.alert('Google Sign-In Failed', error.message);
+    }
   };
 
   return (
@@ -102,11 +122,17 @@ const SignupScreen = ({navigation}) => {
             <View style={styles.dividerLine} />
           </View>
           <View style={styles.socialIconsContainer}>
-            {[Google_Logo, Facebook_Logo, Apple_Logo].map((logo, index) => (
-              <TouchableOpacity key={index} style={styles.socialIcon}>
-                <Image source={logo} style={styles.socialLogo} />
-              </TouchableOpacity>
-            ))}
+            <TouchableOpacity
+              style={styles.socialIcon}
+              onPress={handleGoogleSignIn}>
+              <Image source={Google_Logo} style={styles.socialLogo} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.socialIcon}>
+              <Image source={Facebook_Logo} style={styles.socialLogo} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.socialIcon}>
+              <Image source={Apple_Logo} style={styles.socialLogo} />
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>

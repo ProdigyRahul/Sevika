@@ -1,4 +1,5 @@
 import React, {createContext, useState, useEffect} from 'react';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {
   storeUserData,
   getUserData,
@@ -14,7 +15,15 @@ export const AuthProvider = ({children}) => {
 
   useEffect(() => {
     checkUserData();
+    configureGoogleSignIn();
   }, []);
+
+  const configureGoogleSignIn = async () => {
+    await GoogleSignin.configure({
+      webClientId:
+        '443401979985-jumir08cfrt97p2370p2f6qat6qifhu7.apps.googleusercontent.com',
+    });
+  };
 
   const checkUserData = async () => {
     const storedUserData = await getUserData();
@@ -44,27 +53,35 @@ export const AuthProvider = ({children}) => {
     }
   };
 
-  const signup = async (email, password) => {
+  const googleSignIn = async () => {
     try {
-      const response = await authApi.signup(email, password);
-      const userDataToStore = {
-        token: response.token,
-        id: response.user.id,
-        firstName: response.user.firstName,
-        lastName: response.user.lastName,
-        email: response.user.email,
-        userType: response.user.userType,
-      };
-      setUserData(userDataToStore);
-      await storeUserData(userDataToStore);
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      const response = await authApi.googleSignIn(userInfo);
+      if (response && response.user) {
+        const userDataToStore = {
+          token: response.token,
+          id: response.user.id,
+          firstName: response.user.firstName,
+          lastName: response.user.lastName,
+          email: response.user.email,
+          userType: response.user.userType,
+          photoURL: response.user.photoURL,
+        };
+        setUserData(userDataToStore);
+        await storeUserData(userDataToStore);
+      } else {
+        throw new Error('Invalid response from server');
+      }
     } catch (error) {
-      throw error;
+      throw error.message || 'An error occurred during Google Sign-In';
     }
   };
 
   const logout = async () => {
     try {
       await authApi.logout();
+      await GoogleSignin.signOut();
       setUserData(null);
       await removeUserData();
     } catch (error) {
@@ -73,7 +90,8 @@ export const AuthProvider = ({children}) => {
   };
 
   return (
-    <AuthContext.Provider value={{isLoading, userData, login, signup, logout}}>
+    <AuthContext.Provider
+      value={{isLoading, userData, login, googleSignIn, logout}}>
       {children}
     </AuthContext.Provider>
   );

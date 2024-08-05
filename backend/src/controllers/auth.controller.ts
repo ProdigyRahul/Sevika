@@ -1,4 +1,4 @@
-import { Types } from 'mongoose';
+import { Types } from "mongoose";
 import { RequestHandler } from "express";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
@@ -8,7 +8,89 @@ import { sendVerificationEmail } from "@/services/mail/createAccountMail";
 import { sendForgetPasswordLink } from "@/services/mail/resetPasswordMail";
 import config from "@/config/config";
 import { logger } from "@/config/logger";
-import Application, { IApplication } from "@/models/application.model";
+
+export const googleSignInController: RequestHandler = async (req, res) => {
+  try {
+    const { googleId, email, firstName, lastName, photoURL } = req.body;
+
+    let user = await User.findOne({ email });
+
+    if (user) {
+      // If user exists, update Google-specific fields
+      user.googleId = googleId;
+      user.photoURL = photoURL;
+      user.isVerified = true;
+      await user.save();
+    } else {
+      // If user doesn't exist, create a new user
+      user = new User({
+        googleId,
+        email,
+        firstName,
+        lastName,
+        photoURL,
+        isVerified: true,
+        termsAccepted: true,
+        userType: "Volunteer",
+      });
+      await user.save();
+    }
+
+    const token = jwt.sign({ userId: user._id }, config.jwtSecret, {
+      expiresIn: "1d",
+    });
+
+    res.status(200).json({
+      message: "Google Sign-In successful",
+      token,
+      user: {
+        id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        userType: user.userType,
+        photoURL: user.photoURL,
+      },
+    });
+  } catch (error) {
+    logger.error("Google Sign-In error:", error);
+    res.status(500).json({ message: "Error in Google Sign-In" });
+  }
+};
+
+export const completeProfileController: RequestHandler = async (req, res) => {
+  try {
+    const { userId, phoneNumber, city, location, userType } = req.body;
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    user.phoneNumber = phoneNumber;
+    user.city = city;
+    user.location = location;
+    user.userType = userType;
+    await user.save();
+
+    res.status(200).json({
+      message: "Profile completed successfully",
+      user: {
+        id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        userType: user.userType,
+        phoneNumber: user.phoneNumber,
+        city: user.city,
+        location: user.location,
+      },
+    });
+  } catch (error) {
+    logger.error("Complete profile error:", error);
+    res.status(500).json({ message: "Error in completing profile" });
+  }
+};
 
 export const signupController: RequestHandler = async (req, res) => {
   try {
@@ -244,10 +326,5 @@ export const logoutController: RequestHandler = async (req, res) => {
 };
 
 export const candidateapproval: RequestHandler = async (req, res) => {
-
   const { status } = req.body;
-
-
-
-
-}
+};
