@@ -1,3 +1,4 @@
+import { Types } from 'mongoose';
 import { RequestHandler } from "express";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
@@ -7,6 +8,7 @@ import { sendVerificationEmail } from "@/services/mail/createAccountMail";
 import { sendForgetPasswordLink } from "@/services/mail/resetPasswordMail";
 import config from "@/config/config";
 import { logger } from "@/config/logger";
+import Application, { IApplication } from "@/models/application.model";
 
 export const signupController: RequestHandler = async (req, res) => {
   try {
@@ -240,3 +242,12 @@ export const logoutController: RequestHandler = async (req, res) => {
   // The client should remove the token from storage
   res.status(200).json({ message: "Logged out successfully" });
 };
+
+export const candidateapproval: RequestHandler = async (req, res) => {
+
+  const { status } = req.body;
+
+
+
+
+}
