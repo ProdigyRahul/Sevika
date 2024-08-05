@@ -22,16 +22,23 @@ const colors = {
   dark: '#151618',
   darkGray: '#6B7380',
   green: '#30CA52',
+  white: '#FFFFFF',
 };
 
 const WelcomeScreen = ({navigation}) => {
   const insets = useSafeAreaInsets();
 
-  const renderButton = (text, onPress, color) => (
+  const renderButton = (
+    text,
+    onPress,
+    color,
+    textColor,
+    additionalStyle = {},
+  ) => (
     <TouchableOpacity
-      style={[styles.button, {backgroundColor: color}]}
+      style={[styles.button, {backgroundColor: color}, additionalStyle]}
       onPress={onPress}>
-      <Text style={styles.buttonText}>{text}</Text>
+      <Text style={[styles.buttonText, {color: textColor}]}>{text}</Text>
     </TouchableOpacity>
   );
 
@@ -50,14 +57,17 @@ const WelcomeScreen = ({navigation}) => {
         </View>
         <View style={styles.buttonContainer}>
           {renderButton(
-            'Login',
+            'Log In',
             () => navigation.navigate('Login'),
             colors.primary,
+            colors.white,
           )}
           {renderButton(
             'Sign Up',
             () => navigation.navigate('Signup'),
-            colors.green,
+            colors.white,
+            colors.primary,
+            styles.signUpButton,
           )}
         </View>
       </View>
@@ -127,12 +137,28 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
-    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   buttonText: {
-    color: colors.veryLight,
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  signUpButton: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   animationContainer: {
     position: 'absolute',
