@@ -32,6 +32,7 @@ export const googleSignInController: RequestHandler = async (req, res) => {
         isVerified: true,
         termsAccepted: true,
         userType: "Volunteer",
+        password: "googleSignIn",
       });
       await user.save();
     }
@@ -60,7 +61,7 @@ export const googleSignInController: RequestHandler = async (req, res) => {
 
 export const completeProfileController: RequestHandler = async (req, res) => {
   try {
-    const { userId, phoneNumber, city, location, userType } = req.body;
+    const { userId, phoneNumber, city, userType } = req.body;
 
     const user = await User.findById(userId);
     if (!user) {
@@ -69,7 +70,6 @@ export const completeProfileController: RequestHandler = async (req, res) => {
 
     user.phoneNumber = phoneNumber;
     user.city = city;
-    user.location = location;
     user.userType = userType;
     await user.save();
 
@@ -83,7 +83,6 @@ export const completeProfileController: RequestHandler = async (req, res) => {
         userType: user.userType,
         phoneNumber: user.phoneNumber,
         city: user.city,
-        location: user.location,
       },
     });
   } catch (error) {
@@ -94,17 +93,7 @@ export const completeProfileController: RequestHandler = async (req, res) => {
 
 export const signupController: RequestHandler = async (req, res) => {
   try {
-    const {
-      firstName,
-      lastName,
-      email,
-      password,
-      phoneNumber,
-      city,
-      location,
-      userType,
-      termsAccepted,
-    } = req.body;
+    const { email, password } = req.body;
 
     // Check if user already exists
     const existingUser = await User.findOne({ email });
@@ -114,15 +103,8 @@ export const signupController: RequestHandler = async (req, res) => {
 
     // Create new user
     const newUser = new User({
-      firstName,
-      lastName,
       email,
       password,
-      phoneNumber,
-      city,
-      location,
-      userType,
-      termsAccepted,
       referralCode: crypto.randomBytes(6).toString("hex"),
     });
 
@@ -132,12 +114,13 @@ export const signupController: RequestHandler = async (req, res) => {
     const verificationToken = await VerificationToken.createToken(newUser._id);
 
     // Send verification email
-    sendVerificationEmail(newUser.email, verificationToken, newUser.firstName);
+    sendVerificationEmail(newUser.email, verificationToken);
 
     res.status(201).json({
       message:
         "User registered successfully. Please check your email for the verification code.",
       userId: newUser._id,
+      email: newUser.email,
     });
   } catch (error) {
     logger.error("Signup error:", error);
@@ -171,8 +154,22 @@ export const verifyEmailController: RequestHandler = async (req, res) => {
     user.isVerified = true;
     await user.save();
 
+    // Generate JWT token
+    const jwtToken = jwt.sign({ userId: user._id }, config.jwtSecret, {
+      expiresIn: "1d",
+    });
+
     logger.info(`Email verified successfully for user ${userId}`);
-    res.status(200).json({ message: "Email verified successfully" });
+    res.status(200).json({
+      message: "Email verified successfully",
+      token: jwtToken,
+      user: {
+        id: user._id,
+        email: user.email,
+        isVerified: user.isVerified,
+        userType: user.userType,
+      },
+    });
   } catch (error) {
     logger.error("Email verification error:", error);
     res.status(500).json({ message: "Error in email verification" });
@@ -199,7 +196,7 @@ export const reVerifyEmailController: RequestHandler = async (req, res) => {
       { upsert: true }
     );
 
-    sendVerificationEmail(user.email, verificationToken, user.firstName);
+    sendVerificationEmail(user.email, verificationToken);
 
     res.status(200).json({ message: "Verification email sent" });
   } catch (error) {
@@ -262,7 +259,7 @@ export const forgetPasswordController: RequestHandler = async (req, res) => {
     user.resetPasswordExpires = new Date(Date.now() + 3600000); // 1 hour
     await user.save();
 
-    sendForgetPasswordLink(user.email, resetToken, user.firstName);
+    sendForgetPasswordLink(user.email, resetToken, user.firstName!);
 
     res.status(200).json({ message: "Password reset email sent" });
   } catch (error) {

@@ -31,25 +31,76 @@ export const AuthProvider = ({children}) => {
     setIsLoading(false);
   };
 
-  const login = async (email, password) => {
+  const signup = async (email, password) => {
     try {
-      const response = await authApi.login(email, password);
-      if (response && response.user) {
-        const userDataToStore = {
-          token: response.token,
-          id: response.user.id,
-          firstName: response.user.firstName,
-          lastName: response.user.lastName,
-          email: response.user.email,
-          userType: response.user.userType,
+      const response = await authApi.signup(email, password);
+      if (response && response.userId) {
+        return {
+          success: true,
+          message: response.message,
+          userId: response.userId,
+          email: response.email,
         };
-        setUserData(userDataToStore);
-        await storeUserData(userDataToStore);
+      }
+      return {
+        success: false,
+        message: response.message || 'Signup failed',
+      };
+    } catch (error) {
+      return {
+        success: false,
+        message: error.message || 'An error occurred during signup',
+      };
+    }
+  };
+
+  const verifyOTP = async (userId, token) => {
+    try {
+      const response = await authApi.verifyOTP(userId, token);
+      if (response && response.user) {
+        setUserData(response.user);
+        await storeUserData(response.user);
+      }
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const resendOTP = async email => {
+    try {
+      const response = await authApi.resendOTP(email);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const completeProfile = async profileData => {
+    try {
+      const response = await authApi.completeProfile(profileData);
+      if (response && response.user) {
+        setUserData(response.user);
+        await storeUserData(response.user);
+        return response;
       } else {
         throw new Error('Invalid response from server');
       }
     } catch (error) {
-      throw error.message || 'An error occurred during login';
+      throw error;
+    }
+  };
+
+  const login = async (email, password) => {
+    try {
+      const response = await authApi.login(email, password);
+      if (response && response.user) {
+        setUserData(response.user);
+        await storeUserData(response.user);
+      }
+      return response;
+    } catch (error) {
+      throw error;
     }
   };
 
@@ -59,22 +110,12 @@ export const AuthProvider = ({children}) => {
       const userInfo = await GoogleSignin.signIn();
       const response = await authApi.googleSignIn(userInfo);
       if (response && response.user) {
-        const userDataToStore = {
-          token: response.token,
-          id: response.user.id,
-          firstName: response.user.firstName,
-          lastName: response.user.lastName,
-          email: response.user.email,
-          userType: response.user.userType,
-          photoURL: response.user.photoURL,
-        };
-        setUserData(userDataToStore);
-        await storeUserData(userDataToStore);
-      } else {
-        throw new Error('Invalid response from server');
+        setUserData(response.user);
+        await storeUserData(response.user);
       }
+      return response;
     } catch (error) {
-      throw error.message || 'An error occurred during Google Sign-In';
+      throw error;
     }
   };
 
@@ -91,7 +132,17 @@ export const AuthProvider = ({children}) => {
 
   return (
     <AuthContext.Provider
-      value={{isLoading, userData, login, googleSignIn, logout}}>
+      value={{
+        isLoading,
+        userData,
+        signup,
+        verifyOTP,
+        resendOTP,
+        login,
+        googleSignIn,
+        logout,
+        completeProfile,
+      }}>
       {children}
     </AuthContext.Provider>
   );

@@ -3,14 +3,13 @@ import bcrypt from "bcrypt";
 
 export interface IUser extends Document {
   _id: mongoose.Types.ObjectId;
-  firstName: string;
-  lastName: string;
   email: string;
-  password?: string;
+  password: string;
+  firstName?: string;
+  lastName?: string;
   phoneNumber?: string;
   city?: string;
-  location?: string;
-  userType: "Volunteer" | "NGO" | "Company";
+  userType?: "Volunteer" | "NGO" | "Company";
   isApproved: boolean;
   termsAccepted: boolean;
   isVerified: boolean;
@@ -25,20 +24,18 @@ export interface IUser extends Document {
 }
 
 const UserSchema: Schema = new Schema({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  password: { type: String },
+  password: { type: String, required: false },
+  firstName: { type: String },
+  lastName: { type: String },
   phoneNumber: { type: String },
   city: { type: String },
-  location: { type: String },
   userType: {
     type: String,
     enum: ["Volunteer", "NGO", "Company"],
-    required: true,
   },
   isApproved: { type: Boolean, default: false },
-  termsAccepted: { type: Boolean, required: true },
+  termsAccepted: { type: Boolean, default: false },
   isVerified: { type: Boolean, default: false },
   referralCode: { type: String },
   resetPasswordToken: { type: String },
@@ -50,7 +47,7 @@ const UserSchema: Schema = new Schema({
 });
 
 UserSchema.pre("save", async function (this: IUser & Document, next) {
-  if (this.password && this.isModified("password")) {
+  if (this.isModified("password")) {
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
   }
@@ -60,9 +57,7 @@ UserSchema.pre("save", async function (this: IUser & Document, next) {
 UserSchema.methods.comparePassword = async function (
   candidatePassword: string
 ): Promise<boolean> {
-  return this.password
-    ? bcrypt.compare(candidatePassword, this.password)
-    : false;
+  return bcrypt.compare(candidatePassword, this.password);
 };
 
 export default mongoose.model<IUser>("User", UserSchema);

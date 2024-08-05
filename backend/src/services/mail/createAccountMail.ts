@@ -11,11 +11,7 @@ const transporter = nodemailer.createTransport({
   auth: config.smtp.auth,
 });
 
-export const sendVerificationEmail = async (
-  to: string,
-  token: string,
-  userName: string
-) => {
+export const sendVerificationEmail = async (to: string, token: string) => {
   const logoPath = path.join(__dirname, "../../public/Sevika-logo.png");
 
   const htmlContent = `
@@ -79,7 +75,6 @@ export const sendVerificationEmail = async (
           <img src="cid:logo" alt="Sevika Logo">
         </div>
         <h2 style="text-align: center;">Welcome to Sevika</h2>
-        <p style="font-size: 18px; color: #555;">Hello, ${userName}</p>
         <p>Thank you for joining Sevika, your platform for connecting volunteers with meaningful opportunities. To complete your registration, please use the following One-Time Password (OTP) to verify your email address:</p>
         <div class="otp">${token}</div>
         <p>This OTP will expire in 5 minutes. If you didn't request this verification, please disregard this email.</p>

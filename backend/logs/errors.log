@@ -1,2 +1,4 @@
 Sun Aug 04 2024 22:01:33 [AttendX-Development] [31merror[39m: [31mSignup error: User validation failed: termsAcccepted: Path `termsAcccepted` is required.[39m
 Sun Aug 04 2024 22:02:08 [AttendX-Development] [31merror[39m: [31mSignup error: Failed to send verification email[39m
+Mon Aug 05 2024 23:19:44 [AttendX-Development] [31merror[39m: [31mGoogle Sign-In error: User validation failed: password: Path `password` is required.[39m
+Mon Aug 05 2024 23:21:43 [AttendX-Development] [31merror[39m: [31mGoogle Sign-In error: User validation failed: password: Path `password` is required.[39m

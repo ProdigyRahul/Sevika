@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef} from 'react';
 import {
   View,
   Text,
@@ -10,6 +10,7 @@ import {
   ScrollView,
   Platform,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
 import Wrapper from '../components/Wrapper';
 import Sevika_Logo from '../assets/images/Sevika-logo.png';
@@ -19,23 +20,20 @@ import Apple_Logo from '../assets/images/apple-logo.png';
 import {defaultColors} from '../constants/Colors';
 import {deviceWidth} from '../constants/Scaling';
 import {useAuth} from '../hooks/useAuth';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 const SignupScreen = ({navigation}) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [isConfirmPasswordFocused, setIsConfirmPasswordFocused] =
     useState(false);
+  const {signup, googleSignIn} = useAuth();
+
   const scrollViewRef = useRef(null);
   const signUpButtonRef = useRef(null);
-  const {googleSignIn} = useAuth();
-
-  useEffect(() => {
-    GoogleSignin.configure({
-      webClientId:
-        '443401979985-jumir08cfrt97p2370p2f6qat6qifhu7.apps.googleusercontent.com',
-    });
-  }, []);
 
   const handleInputFocus = inputName => {
     if (inputName === 'email') setIsEmailFocused(true);
@@ -53,6 +51,36 @@ const SignupScreen = ({navigation}) => {
     if (inputName === 'email') setIsEmailFocused(false);
     if (inputName === 'password') setIsPasswordFocused(false);
     if (inputName === 'confirmPassword') setIsConfirmPasswordFocused(false);
+  };
+
+  const handleSignup = async () => {
+    if (password !== confirmPassword) {
+      Alert.alert('Error', 'Passwords do not match');
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const result = await signup(email, password);
+      setIsLoading(false);
+      if (result.success) {
+        Alert.alert('Success', result.message, [
+          {
+            text: 'OK',
+            onPress: () =>
+              navigation.navigate('VerifyOTP', {
+                email: result.email,
+                userId: result.userId,
+              }),
+          },
+        ]);
+      } else {
+        Alert.alert('Error', result.message);
+      }
+    } catch (error) {
+      setIsLoading(false);
+      Alert.alert('Error', 'An unexpected error occurred');
+    }
   };
 
   const handleGoogleSignIn = async () => {
@@ -84,6 +112,10 @@ const SignupScreen = ({navigation}) => {
               placeholder="Email"
               placeholderTextColor={defaultColors.gray}
               style={[styles.input, isEmailFocused && styles.inputFocused]}
+              value={email}
+              onChangeText={setEmail}
+              keyboardType="email-address"
+              autoCapitalize="none"
               onFocus={() => handleInputFocus('email')}
               onBlur={() => handleInputBlur('email')}
             />
@@ -91,6 +123,8 @@ const SignupScreen = ({navigation}) => {
               placeholder="Password"
               placeholderTextColor={defaultColors.gray}
               style={[styles.input, isPasswordFocused && styles.inputFocused]}
+              value={password}
+              onChangeText={setPassword}
               secureTextEntry
               onFocus={() => handleInputFocus('password')}
               onBlur={() => handleInputBlur('password')}
@@ -102,12 +136,22 @@ const SignupScreen = ({navigation}) => {
                 styles.input,
                 isConfirmPasswordFocused && styles.inputFocused,
               ]}
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
               secureTextEntry
               onFocus={() => handleInputFocus('confirmPassword')}
               onBlur={() => handleInputBlur('confirmPassword')}
             />
-            <TouchableOpacity style={styles.signUpButton} ref={signUpButtonRef}>
-              <Text style={styles.signUpButtonText}>Sign up</Text>
+            <TouchableOpacity
+              ref={signUpButtonRef}
+              style={styles.signUpButton}
+              onPress={handleSignup}
+              disabled={isLoading}>
+              {isLoading ? (
+                <ActivityIndicator color="white" />
+              ) : (
+                <Text style={styles.signUpButtonText}>Sign up</Text>
+              )}
             </TouchableOpacity>
           </View>
           <View style={styles.loginContainer}>
@@ -173,7 +217,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   inputContainer: {
-    width: deviceWidth - 60, // Adjust width to match LoginScreen
+    width: deviceWidth - 60,
     alignItems: 'center',
   },
   input: {
@@ -186,7 +230,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#C7D0E1',
     color: defaultColors.black,
-    width: '100%', // Make sure input takes full width of container
+    width: '100%',
   },
   inputFocused: {
     borderColor: defaultColors.primary,
@@ -209,7 +253,7 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     elevation: 8,
     marginTop: 10,
-    width: '100%', // Make button take full width of container
+    width: '100%',
   },
   signUpButtonText: {
     color: 'white',
