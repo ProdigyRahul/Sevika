@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Platform,
+  Alert,
 } from 'react-native';
 import Wrapper from '../components/Wrapper';
 import Sevika_Logo from '../assets/images/Sevika-logo.png';
@@ -17,10 +18,45 @@ import Facebook_Logo from '../assets/images/facebook-logo.png';
 import Apple_Logo from '../assets/images/apple-logo.png';
 import {defaultColors} from '../constants/Colors';
 import {deviceWidth} from '../constants/Scaling';
+import {useAuth} from '../hooks/useAuth';
 
 const LoginScreen = ({navigation}) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const {login} = useAuth();
+
+  const validateEmail = email => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const handleLogin = async () => {
+    setEmailError('');
+    setPasswordError('');
+
+    if (!email.trim()) {
+      setEmailError('Email is required');
+      return;
+    }
+    if (!validateEmail(email)) {
+      setEmailError('Invalid email format');
+      return;
+    }
+    if (!password.trim()) {
+      setPasswordError('Password is required');
+      return;
+    }
+
+    try {
+      await login(email, password);
+    } catch (error) {
+      Alert.alert('Login Failed', error.message);
+    }
+  };
 
   return (
     <Wrapper style={styles.wrapper}>
@@ -42,7 +78,12 @@ const LoginScreen = ({navigation}) => {
               style={[styles.input, isEmailFocused && styles.inputFocused]}
               onFocus={() => setIsEmailFocused(true)}
               onBlur={() => setIsEmailFocused(false)}
+              value={email}
+              onChangeText={setEmail}
             />
+            {emailError ? (
+              <Text style={styles.errorText}>{emailError}</Text>
+            ) : null}
             <TextInput
               placeholder="Password"
               placeholderTextColor={defaultColors.gray}
@@ -50,14 +91,19 @@ const LoginScreen = ({navigation}) => {
               secureTextEntry
               onFocus={() => setIsPasswordFocused(true)}
               onBlur={() => setIsPasswordFocused(false)}
+              value={password}
+              onChangeText={setPassword}
             />
+            {passwordError ? (
+              <Text style={styles.errorText}>{passwordError}</Text>
+            ) : null}
             <View style={styles.forgotPasswordContainer}>
               <TouchableOpacity>
                 <Text style={styles.forgotPassword}>Forgot Password ?</Text>
               </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.signInButton}>
+            <TouchableOpacity style={styles.signInButton} onPress={handleLogin}>
               <Text style={styles.signInButtonText}>Sign in</Text>
             </TouchableOpacity>
           </View>
@@ -228,6 +274,12 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     resizeMode: 'contain',
+  },
+  errorText: {
+    color: defaultColors.red,
+    fontSize: 14,
+    alignSelf: 'flex-start',
+    marginBottom: 10,
   },
 });
 
