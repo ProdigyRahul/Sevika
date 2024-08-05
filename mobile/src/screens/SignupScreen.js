@@ -18,7 +18,7 @@ import Apple_Logo from '../assets/images/apple-logo.png';
 import {defaultColors} from '../constants/Colors';
 import {deviceWidth} from '../constants/Scaling';
 
-const SignupScreen = () => {
+const SignupScreen = ({navigation}) => {
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [isConfirmPasswordFocused, setIsConfirmPasswordFocused] =
@@ -33,9 +33,12 @@ const SignupScreen = () => {
 
     setTimeout(() => {
       signUpButtonRef.current?.measureLayout(scrollViewRef.current, (x, y) => {
-        scrollViewRef.current?.scrollTo({y: (y - 20) / 4, animated: true});
+        scrollViewRef.current?.scrollTo({
+          y: y - 150,
+          animated: true,
+        });
       });
-    }, 100);
+    }, 300);
   };
 
   const handleInputBlur = inputName => {
@@ -45,19 +48,18 @@ const SignupScreen = () => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper style={styles.wrapper}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.keyboardAvoidingView}>
         <ScrollView
-          ref={scrollViewRef}
           contentContainerStyle={styles.scrollViewContent}
           keyboardShouldPersistTaps="handled"
-          showsVerticalScrollIndicator={false}>
+          ref={scrollViewRef}>
           <Image source={Sevika_Logo} style={styles.logo} />
           <Text style={styles.headerText}>Create Account</Text>
           <Text style={styles.subHeaderText}>
-            Join us and start your journey today!
+            Create your account to get started
           </Text>
           <View style={styles.inputContainer}>
             <TextInput
@@ -87,13 +89,13 @@ const SignupScreen = () => {
               onBlur={() => handleInputBlur('confirmPassword')}
             />
             <TouchableOpacity style={styles.signUpButton} ref={signUpButtonRef}>
-              <Text style={styles.signUpButtonText}>Sign up</Text>
+              <Text style={styles.signUpButtonText}>Sign Up</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.loginContainer}>
-            <Text style={styles.loginText}>Already have an account?</Text>
-            <TouchableOpacity>
-              <Text style={styles.loginButton}>Log in</Text>
+          <View style={styles.signInContainer}>
+            <Text style={styles.signInText}>Already have an account?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+              <Text style={styles.signInButton}>Sign in</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.divider}>
@@ -115,8 +117,13 @@ const SignupScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  wrapper: {
+    backgroundColor: defaultColors.veryLight,
+    flex: 1,
+  },
   keyboardAvoidingView: {
     flex: 1,
+    backgroundColor: defaultColors.veryLight,
   },
   scrollViewContent: {
     flexGrow: 1,
@@ -142,7 +149,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   inputContainer: {
-    width: deviceWidth - 60, // Adjust width to match LoginScreen
+    width: deviceWidth - 60,
     alignItems: 'center',
   },
   input: {
@@ -155,7 +162,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#C7D0E1',
     color: defaultColors.black,
-    width: '100%', // Make sure input takes full width of container
+    width: '100%',
   },
   inputFocused: {
     borderColor: defaultColors.primary,
@@ -177,8 +184,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 6,
     elevation: 8,
-    marginTop: 10,
-    width: '100%', // Make button take full width of container
+    width: '100%',
   },
   signUpButtonText: {
     color: 'white',
@@ -187,17 +193,17 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 1,
   },
-  loginContainer: {
+  signInContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: 25,
     marginBottom: 30,
   },
-  loginText: {
+  signInText: {
     color: defaultColors.gray,
     fontSize: 16,
   },
-  loginButton: {
+  signInButton: {
     color: defaultColors.primary,
     fontWeight: '700',
     fontSize: 16,

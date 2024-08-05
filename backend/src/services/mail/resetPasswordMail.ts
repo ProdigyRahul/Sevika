@@ -1,4 +1,3 @@
-// src/services/resetPasswordMail.ts
 import config from "@/config/config";
 import { logger } from "@/config/logger";
 import nodemailer from "nodemailer";

@@ -1,10 +1,9 @@
 export const defaultColors = {
   primary: '#008080',
-  dark: '#000000',
-  light: '#FFFFFF',
-  gray: '#333333',
-  lightGray: '#CCCCCC',
-  error: '#FF0000',
-  success: '#00FF00',
-  warning: '#FFFF00',
+  lightPrimary: '#9ACCCD',
+  veryLight: '#F8F8FF',
+  dark: '#151618',
+  darkGray: '#6B7380',
+  green: '#30CA52',
+  red: '#CA3030',
 };

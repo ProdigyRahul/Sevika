@@ -18,12 +18,12 @@ import Apple_Logo from '../assets/images/apple-logo.png';
 import {defaultColors} from '../constants/Colors';
 import {deviceWidth} from '../constants/Scaling';
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
 
   return (
-    <Wrapper>
+    <Wrapper style={styles.wrapper}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.keyboardAvoidingView}>
@@ -63,7 +63,7 @@ const LoginScreen = () => {
           </View>
           <View style={styles.createAccountContainer}>
             <Text style={styles.createAccountText}>Don't have an account?</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
               <Text style={styles.createAccountButton}>Create new account</Text>
             </TouchableOpacity>
           </View>
@@ -86,8 +86,13 @@ const LoginScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  wrapper: {
+    backgroundColor: defaultColors.veryLight,
+    flex: 1,
+  },
   keyboardAvoidingView: {
     flex: 1,
+    backgroundColor: defaultColors.veryLight,
   },
   scrollViewContent: {
     flexGrow: 1,
