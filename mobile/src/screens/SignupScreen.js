@@ -33,12 +33,9 @@ const SignupScreen = ({navigation}) => {
 
     setTimeout(() => {
       signUpButtonRef.current?.measureLayout(scrollViewRef.current, (x, y) => {
-        scrollViewRef.current?.scrollTo({
-          y: y - 150,
-          animated: true,
-        });
+        scrollViewRef.current?.scrollTo({y: (y - 20) / 4, animated: true});
       });
-    }, 300);
+    }, 100);
   };
 
   const handleInputBlur = inputName => {
@@ -53,13 +50,14 @@ const SignupScreen = ({navigation}) => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.keyboardAvoidingView}>
         <ScrollView
+          ref={scrollViewRef}
           contentContainerStyle={styles.scrollViewContent}
           keyboardShouldPersistTaps="handled"
-          ref={scrollViewRef}>
+          showsVerticalScrollIndicator={false}>
           <Image source={Sevika_Logo} style={styles.logo} />
           <Text style={styles.headerText}>Create Account</Text>
           <Text style={styles.subHeaderText}>
-            Create your account to get started
+            Join us and start your journey today!
           </Text>
           <View style={styles.inputContainer}>
             <TextInput
@@ -89,13 +87,13 @@ const SignupScreen = ({navigation}) => {
               onBlur={() => handleInputBlur('confirmPassword')}
             />
             <TouchableOpacity style={styles.signUpButton} ref={signUpButtonRef}>
-              <Text style={styles.signUpButtonText}>Sign Up</Text>
+              <Text style={styles.signUpButtonText}>Sign up</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.signInContainer}>
-            <Text style={styles.signInText}>Already have an account?</Text>
+          <View style={styles.loginContainer}>
+            <Text style={styles.loginText}>Already have an account?</Text>
             <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-              <Text style={styles.signInButton}>Sign in</Text>
+              <Text style={styles.loginButton}>Log in</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.divider}>
@@ -149,7 +147,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   inputContainer: {
-    width: deviceWidth - 60,
+    width: deviceWidth - 60, // Adjust width to match LoginScreen
     alignItems: 'center',
   },
   input: {
@@ -162,7 +160,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#C7D0E1',
     color: defaultColors.black,
-    width: '100%',
+    width: '100%', // Make sure input takes full width of container
   },
   inputFocused: {
     borderColor: defaultColors.primary,
@@ -184,7 +182,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 6,
     elevation: 8,
-    width: '100%',
+    marginTop: 10,
+    width: '100%', // Make button take full width of container
   },
   signUpButtonText: {
     color: 'white',
@@ -193,17 +192,17 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 1,
   },
-  signInContainer: {
+  loginContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: 25,
     marginBottom: 30,
   },
-  signInText: {
+  loginText: {
     color: defaultColors.gray,
     fontSize: 16,
   },
-  signInButton: {
+  loginButton: {
     color: defaultColors.primary,
     fontWeight: '700',
     fontSize: 16,
