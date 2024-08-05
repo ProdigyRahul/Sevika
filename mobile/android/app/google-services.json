@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "443401979985",
+    "project_id": "sevika-9baad",
+    "storage_bucket": "sevika-9baad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:443401979985:android:f1e01f173a43e47b7ed070",
+        "android_client_info": {
+          "package_name": "com.sevika"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "443401979985-jc2jcdn18fq1hl849tr39o9ed2gljh3r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sevika",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "443401979985-jumir08cfrt97p2370p2f6qat6qifhu7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_Z4ey-NVQ3Il_vupU5tKZYZuwRPKo9Tc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "443401979985-jumir08cfrt97p2370p2f6qat6qifhu7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

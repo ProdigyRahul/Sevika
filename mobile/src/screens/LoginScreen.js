@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -19,6 +19,8 @@ import Apple_Logo from '../assets/images/apple-logo.png';
 import {defaultColors} from '../constants/Colors';
 import {deviceWidth} from '../constants/Scaling';
 import {useAuth} from '../hooks/useAuth';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -28,6 +30,13 @@ const LoginScreen = ({navigation}) => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const {login} = useAuth();
+
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '443401979985-jumir08cfrt97p2370p2f6qat6qifhu7.apps.googleusercontent.com',
+    });
+  }, []);
 
   const validateEmail = email => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -55,6 +64,21 @@ const LoginScreen = ({navigation}) => {
       await login(email, password);
     } catch (error) {
       Alert.alert('Login Failed', error.message);
+    }
+  };
+
+  const onGoogleButtonPress = async () => {
+    try {
+      await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
+      const {idToken} = await GoogleSignin.signIn();
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+      const userCredential = await auth().signInWithCredential(
+        googleCredential,
+      );
+      console.log('Signed in with Google!', userCredential.user);
+    } catch (error) {
+      console.error('Google Sign-In Error:', error);
+      Alert.alert('Google Sign-In Failed', error.message);
     }
   };
 
@@ -119,11 +143,17 @@ const LoginScreen = ({navigation}) => {
             <View style={styles.dividerLine} />
           </View>
           <View style={styles.socialIconsContainer}>
-            {[Google_Logo, Facebook_Logo, Apple_Logo].map((logo, index) => (
-              <TouchableOpacity key={index} style={styles.socialIcon}>
-                <Image source={logo} style={styles.socialLogo} />
-              </TouchableOpacity>
-            ))}
+            <TouchableOpacity
+              style={styles.socialIcon}
+              onPress={onGoogleButtonPress}>
+              <Image source={Google_Logo} style={styles.socialLogo} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.socialIcon}>
+              <Image source={Facebook_Logo} style={styles.socialLogo} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.socialIcon}>
+              <Image source={Apple_Logo} style={styles.socialLogo} />
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
