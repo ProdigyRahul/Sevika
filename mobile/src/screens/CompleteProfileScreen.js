@@ -15,24 +15,51 @@ import Wrapper from '../components/Wrapper';
 import {defaultColors} from '../constants/Colors';
 import {deviceWidth} from '../constants/Scaling';
 import {useAuth} from '../hooks/useAuth';
+import {launchImageLibrary} from 'react-native-image-picker';
+import {useNavigation} from '@react-navigation/native';
 
 const CompleteProfileScreen = () => {
+  const navigation = useNavigation();
   const {userData, completeProfile} = useAuth();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [city, setCity] = useState('');
   const [userType, setUserType] = useState('');
+  const [profileImage, setProfileImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (userData) {
+      setFirstName(userData.firstName || '');
+      setLastName(userData.lastName || '');
       setPhoneNumber(userData.phoneNumber || '');
       setCity(userData.city || '');
       setUserType(userData.userType || '');
     }
   }, [userData]);
 
+  const pickImage = () => {
+    const options = {
+      mediaType: 'photo',
+      includeBase64: false,
+      maxHeight: 200,
+      maxWidth: 200,
+    };
+
+    launchImageLibrary(options, response => {
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else {
+        setProfileImage(response.assets[0]);
+      }
+    });
+  };
+
   const handleCompleteProfile = async () => {
-    if (!phoneNumber || !city || !userType) {
+    if (!firstName || !lastName || !phoneNumber || !city || !userType) {
       Alert.alert('Error', 'Please fill in all fields');
       return;
     }
@@ -44,22 +71,49 @@ const CompleteProfileScreen = () => {
 
     setIsLoading(true);
     try {
-      await completeProfile({
+      const profileData = {
         userId: userData.id,
+        firstName,
+        lastName,
         phoneNumber,
         city,
         userType,
-      });
-      setIsLoading(false);
-      Alert.alert('Success', 'Profile completed successfully');
+      };
+
+      // Only include profileImage if it's been selected and it's not a Google user
+      if (profileImage && !userData.googleId) {
+        profileData.profileImage = {
+          uri: profileImage.uri,
+          type: profileImage.type,
+          name: profileImage.fileName || 'profile.jpg',
+        };
+      }
+
+      console.log('Sending profile data:', profileData);
+      const result = await completeProfile(profileData);
+      if (result.success) {
+        Alert.alert('Success', 'Profile completed successfully', [
+          {text: 'OK', onPress: () => navigation.replace('Home')},
+        ]);
+      } else {
+        Alert.alert(
+          'Error',
+          result.message || 'An error occurred while completing your profile',
+        );
+      }
     } catch (error) {
-      setIsLoading(false);
+      console.error('Complete profile error:', error);
       Alert.alert(
         'Error',
         error.message || 'An error occurred while completing your profile',
       );
+    } finally {
+      setIsLoading(false);
     }
   };
+
+  const isGoogleUser = userData && userData.googleId;
+
   return (
     <Wrapper style={styles.wrapper}>
       <ScrollView
@@ -67,13 +121,40 @@ const CompleteProfileScreen = () => {
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}>
         <Text style={styles.headerText}>Complete Your Profile</Text>
-        {userData?.photoURL && (
-          <Image
-            source={{uri: userData.photoURL}}
-            style={styles.profileImage}
-          />
-        )}
+        <TouchableOpacity
+          onPress={pickImage}
+          style={styles.imagePickerContainer}>
+          {profileImage ? (
+            <Image
+              source={{uri: profileImage.uri}}
+              style={styles.profileImage}
+            />
+          ) : userData?.photoURL ? (
+            <Image
+              source={{uri: userData.photoURL}}
+              style={styles.profileImage}
+            />
+          ) : (
+            <Text style={styles.imagePickerText}>Pick a profile image</Text>
+          )}
+        </TouchableOpacity>
         <View style={styles.inputContainer}>
+          <TextInput
+            placeholder="First Name"
+            placeholderTextColor={defaultColors.gray}
+            style={styles.input}
+            value={firstName}
+            onChangeText={setFirstName}
+            editable={!isGoogleUser}
+          />
+          <TextInput
+            placeholder="Last Name"
+            placeholderTextColor={defaultColors.gray}
+            style={styles.input}
+            value={lastName}
+            onChangeText={setLastName}
+            editable={!isGoogleUser}
+          />
           <TextInput
             placeholder="Phone Number"
             placeholderTextColor={defaultColors.gray}
@@ -186,6 +267,24 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textTransform: 'uppercase',
     letterSpacing: 1,
+  },
+  imagePickerContainer: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: '#F1F4FF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+  },
+  imagePickerText: {
+    color: defaultColors.gray,
+    textAlign: 'center',
   },
 });
 

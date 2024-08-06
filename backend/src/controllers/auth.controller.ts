@@ -8,6 +8,8 @@ import { sendVerificationEmail } from "@/services/mail/createAccountMail";
 import { sendForgetPasswordLink } from "@/services/mail/resetPasswordMail";
 import config from "@/config/config";
 import { logger } from "@/config/logger";
+import cloudinary from "@/config/cloudinary";
+import { RequestWithFiles } from "@/middlewares/fileParser.middleware";
 
 export const googleSignInController: RequestHandler = async (req, res) => {
   try {
@@ -59,21 +61,41 @@ export const googleSignInController: RequestHandler = async (req, res) => {
   }
 };
 
-export const completeProfileController: RequestHandler = async (req, res) => {
+export const completeProfileController: RequestHandler = async (
+  req: RequestWithFiles,
+  res
+) => {
   try {
-    const { userId, phoneNumber, city, userType } = req.body;
+    const { firstName, lastName, userId, phoneNumber, city, userType } =
+      req.body;
+    const profileImage = req.files?.profileImage?.[0];
+
+    console.log("Received profile data:", req.body);
+    console.log("Received profile image:", profileImage);
 
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
+    // Only update firstName and lastName if they're not already set (for email/password users)
+    if (!user.firstName) user.firstName = firstName;
+    if (!user.lastName) user.lastName = lastName;
+
     user.phoneNumber = phoneNumber;
     user.city = city;
     user.userType = userType;
+
+    if (profileImage) {
+      const result = await cloudinary.uploader.upload(profileImage.filepath);
+      user.photoURL = result.secure_url;
+    }
+
+    user.isCompletedProfile = true;
     await user.save();
 
     res.status(200).json({
+      success: true,
       message: "Profile completed successfully",
       user: {
         id: user._id,
@@ -83,17 +105,25 @@ export const completeProfileController: RequestHandler = async (req, res) => {
         userType: user.userType,
         phoneNumber: user.phoneNumber,
         city: user.city,
+        photoURL: user.photoURL,
+        isCompletedProfile: true,
       },
     });
   } catch (error) {
-    logger.error("Complete profile error:", error);
-    res.status(500).json({ message: "Error in completing profile" });
+    console.error("Complete profile error:", error);
+    res
+      .status(500)
+      .json({ success: false, message: "Error in completing profile" });
   }
 };
 
-export const signupController: RequestHandler = async (req, res) => {
+export const signupController: RequestHandler = async (
+  req: RequestWithFiles,
+  res
+) => {
   try {
     const { email, password } = req.body;
+    const profileImage = req.files?.profileImage?.[0];
 
     // Check if user already exists
     const existingUser = await User.findOne({ email });
@@ -101,10 +131,17 @@ export const signupController: RequestHandler = async (req, res) => {
       return res.status(400).json({ message: "User already exists" });
     }
 
+    let profileImageUrl = "";
+    if (profileImage) {
+      const result = await cloudinary.uploader.upload(profileImage.filepath);
+      profileImageUrl = result.secure_url;
+    }
+
     // Create new user
     const newUser = new User({
       email,
       password,
+      photoURL: profileImageUrl,
       referralCode: crypto.randomBytes(6).toString("hex"),
     });
 
@@ -121,6 +158,7 @@ export const signupController: RequestHandler = async (req, res) => {
         "User registered successfully. Please check your email for the verification code.",
       userId: newUser._id,
       email: newUser.email,
+      photoURL: newUser.photoURL,
     });
   } catch (error) {
     logger.error("Signup error:", error);
@@ -324,4 +362,13 @@ export const logoutController: RequestHandler = async (req, res) => {
 
 export const candidateapproval: RequestHandler = async (req, res) => {
   const { status } = req.body;
+};
+
+export const isCompletedProfile: RequestHandler = async (req, res) => {
+  const { userId } = req.body;
+  const user = await User.findById(userId);
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+  res.status(200).json({ isCompletedProfile: user.isCompletedProfile });
 };

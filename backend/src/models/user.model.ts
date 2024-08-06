@@ -13,6 +13,7 @@ export interface IUser extends Document {
   isApproved: boolean;
   termsAccepted: boolean;
   isVerified: boolean;
+  isCompletedProfile: boolean;
   referralCode?: string;
   resetPasswordToken?: string;
   resetPasswordExpires?: Date;
@@ -37,6 +38,7 @@ const UserSchema: Schema = new Schema({
   isApproved: { type: Boolean, default: false },
   termsAccepted: { type: Boolean, default: false },
   isVerified: { type: Boolean, default: false },
+  isCompletedProfile: { type: Boolean, default: false },
   referralCode: { type: String },
   resetPasswordToken: { type: String },
   resetPasswordExpires: { type: Date },

@@ -35,11 +35,20 @@ export const AuthProvider = ({children}) => {
     try {
       const response = await authApi.signup(email, password);
       if (response && response.userId) {
+        let isCompletedProfile = false;
+        try {
+          isCompletedProfile = await authApi.isCompletedProfile(
+            response.userId,
+          );
+        } catch (error) {
+          console.error('Error checking profile completion:', error);
+        }
         return {
           success: true,
           message: response.message,
           userId: response.userId,
           email: response.email,
+          isCompletedProfile,
         };
       }
       return {
@@ -80,14 +89,29 @@ export const AuthProvider = ({children}) => {
     try {
       const response = await authApi.completeProfile(profileData);
       if (response && response.user) {
-        setUserData(response.user);
-        await storeUserData(response.user);
-        return response;
+        const updatedUser = {...response.user, isCompletedProfile: true};
+        setUserData(updatedUser);
+        await storeUserData(updatedUser);
+        return {success: true, user: updatedUser};
       } else {
         throw new Error('Invalid response from server');
       }
     } catch (error) {
-      throw error;
+      console.error('Complete profile error:', error);
+      return {
+        success: false,
+        message: error.message || 'Error completing profile',
+      };
+    }
+  };
+
+  const checkProfileCompletion = async user => {
+    try {
+      const isCompleted = await authApi.isCompletedProfile(user.id);
+      return {...user, isCompletedProfile: isCompleted};
+    } catch (error) {
+      console.error('Error checking profile completion:', error);
+      return user;
     }
   };
 
@@ -95,8 +119,18 @@ export const AuthProvider = ({children}) => {
     try {
       const response = await authApi.login(email, password);
       if (response && response.user) {
-        setUserData(response.user);
-        await storeUserData(response.user);
+        let isCompletedProfile = false;
+        try {
+          isCompletedProfile = await authApi.isCompletedProfile(
+            response.user.id,
+          );
+        } catch (error) {
+          console.error('Error checking profile completion:', error);
+        }
+        const updatedUser = {...response.user, isCompletedProfile};
+        setUserData(updatedUser);
+        await storeUserData(updatedUser);
+        return {...response, user: updatedUser};
       }
       return response;
     } catch (error) {
@@ -110,8 +144,18 @@ export const AuthProvider = ({children}) => {
       const userInfo = await GoogleSignin.signIn();
       const response = await authApi.googleSignIn(userInfo);
       if (response && response.user) {
-        setUserData(response.user);
-        await storeUserData(response.user);
+        let isCompletedProfile = false;
+        try {
+          isCompletedProfile = await authApi.isCompletedProfile(
+            response.user.id,
+          );
+        } catch (error) {
+          console.error('Error checking profile completion:', error);
+        }
+        const updatedUser = {...response.user, isCompletedProfile};
+        setUserData(updatedUser);
+        await storeUserData(updatedUser);
+        return {...response, user: updatedUser};
       }
       return response;
     } catch (error) {

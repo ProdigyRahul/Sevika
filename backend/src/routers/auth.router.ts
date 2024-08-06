@@ -10,7 +10,9 @@ import {
   logoutController,
   googleSignInController,
   completeProfileController,
+  isCompletedProfile,
 } from "@/controllers/auth.controller";
+import fileParser from "@/middlewares/fileParser.middleware";
 
 const authRouter = Router();
 
@@ -54,7 +56,7 @@ authRouter.post("/google-signin", googleSignInController);
  * @description Complete user profile after Google Sign-In
  * @access Private
  */
-authRouter.post("/complete-profile", completeProfileController);
+authRouter.post("/complete-profile", fileParser, completeProfileController);
 
 /**
  * @route POST /api/v1/auth/forget-password
@@ -83,5 +85,12 @@ authRouter.get("/is-auth", isAuthController);
  * @access Private
  */
 authRouter.post("/logout", logoutController);
+
+/**
+ * @route GET /api/v1/auth/is-completed-profile
+ * @description Check if user profile is completed
+ * @access Private
+ */
+authRouter.post("/is-completed-profile", isCompletedProfile);
 
 export default authRouter;

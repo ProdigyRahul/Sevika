@@ -97,17 +97,39 @@ export const resendOTP = async email => {
 
 export const completeProfile = async profileData => {
   try {
+    console.log('Sending request to:', `${API_URL}/auth/complete-profile`);
+    console.log('Profile data:', profileData);
+
+    const formData = new FormData();
+    Object.keys(profileData).forEach(key => {
+      if (key === 'profileImage') {
+        formData.append('profileImage', profileData[key]);
+      } else {
+        formData.append(key, profileData[key]);
+      }
+    });
+
     const response = await axios.post(
       `${API_URL}/auth/complete-profile`,
-      profileData,
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      },
     );
+    console.log('Response received:', response.data);
     return response.data;
   } catch (error) {
+    console.error('Complete profile error:', error);
     if (error.response) {
+      console.error('Error response:', error.response.data);
       throw error.response.data;
     } else if (error.request) {
+      console.error('No response received');
       throw new Error('No response received from the server');
     } else {
+      console.error('Error', error.message);
       throw new Error('Error setting up the request');
     }
   }
@@ -118,5 +140,22 @@ export const logout = async () => {
     await axios.post(`${API_URL}/auth/logout`);
   } catch (error) {
     console.error('Logout error:', error);
+  }
+};
+
+export const isCompletedProfile = async userId => {
+  try {
+    const response = await axios.post(`${API_URL}/auth/is-completed-profile`, {
+      userId,
+    });
+    return response.data.isCompletedProfile;
+  } catch (error) {
+    if (error.response) {
+      throw error.response.data;
+    } else if (error.request) {
+      throw new Error('No response received from the server');
+    } else {
+      throw new Error('Error setting up the request');
+    }
   }
 };

@@ -27,7 +27,7 @@ const AppNavigator = () => {
       <Stack.Navigator screenOptions={{headerShown: false}}>
         {userData ? (
           <>
-            {isProfileComplete ? (
+            {userData.isCompletedProfile ? (
               <Stack.Screen name="Home" component={HomeScreen} />
             ) : (
               <>
