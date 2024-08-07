@@ -13,6 +13,12 @@ export const AuthProvider = ({children}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState(null);
 
+  const checkUserData = async () => {
+    const storedUserData = await getUserData();
+    setUserData(storedUserData);
+    setIsLoading(false);
+  };
+
   useEffect(() => {
     checkUserData();
     configureGoogleSignIn();
@@ -23,12 +29,6 @@ export const AuthProvider = ({children}) => {
       webClientId:
         '443401979985-jumir08cfrt97p2370p2f6qat6qifhu7.apps.googleusercontent.com',
     });
-  };
-
-  const checkUserData = async () => {
-    const storedUserData = await getUserData();
-    setUserData(storedUserData);
-    setIsLoading(false);
   };
 
   const signup = async (email, password) => {
@@ -186,6 +186,7 @@ export const AuthProvider = ({children}) => {
         googleSignIn,
         logout,
         completeProfile,
+        checkUserData,
       }}>
       {children}
     </AuthContext.Provider>

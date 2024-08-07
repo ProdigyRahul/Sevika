@@ -1,8 +1,7 @@
-import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useAuth} from '../hooks/useAuth';
-import SplashScreen from '../screens/SplashScreen';
+import LoadingScreen from '../screens/LoadingScreen';
 import HomeScreen from '../screens/HomeScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import LoginScreen from '../screens/LoginScreen';
@@ -13,47 +12,56 @@ import CompleteProfileScreen from '../screens/CompleteProfileScreen';
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
-  const {isLoading, userData} = useAuth();
+  const {isLoading, userData, checkUserData} = useAuth();
+  const [isInitializing, setIsInitializing] = useState(true);
+  const [showLoadingScreen, setShowLoadingScreen] = useState(true);
 
-  if (isLoading) {
-    return <SplashScreen />;
+  useEffect(() => {
+    const initialize = async () => {
+      await checkUserData();
+      setIsInitializing(false);
+    };
+    initialize();
+  }, []);
+
+  const handleLoadingComplete = () => {
+    setShowLoadingScreen(false);
+  };
+
+  if (isInitializing || isLoading || showLoadingScreen) {
+    return <LoadingScreen onLoadingComplete={handleLoadingComplete} />;
   }
 
-  const isProfileComplete =
-    userData && userData.phoneNumber && userData.city && userData.userType;
-
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
-        {userData ? (
-          <>
-            {userData.isCompletedProfile ? (
-              <Stack.Screen name="Home" component={HomeScreen} />
-            ) : (
-              <>
-                <Stack.Screen
-                  name="CompleteProfile"
-                  component={CompleteProfileScreen}
-                />
-                <Stack.Screen name="Home" component={HomeScreen} />
-              </>
-            )}
-          </>
-        ) : (
-          <>
-            <Stack.Screen name="Welcome" component={WelcomeScreen} />
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Signup" component={SignupScreen} />
-            <Stack.Screen name="VerifyOTP" component={VerifyOTPScreen} />
-            <Stack.Screen
-              name="CompleteProfile"
-              component={CompleteProfileScreen}
-            />
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      {userData ? (
+        <>
+          {userData.isCompletedProfile ? (
             <Stack.Screen name="Home" component={HomeScreen} />
-          </>
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
+          ) : (
+            <>
+              <Stack.Screen
+                name="CompleteProfile"
+                component={CompleteProfileScreen}
+              />
+              <Stack.Screen name="Home" component={HomeScreen} />
+            </>
+          )}
+        </>
+      ) : (
+        <>
+          <Stack.Screen name="Welcome" component={WelcomeScreen} />
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Signup" component={SignupScreen} />
+          <Stack.Screen name="VerifyOTP" component={VerifyOTPScreen} />
+          <Stack.Screen
+            name="CompleteProfile"
+            component={CompleteProfileScreen}
+          />
+          <Stack.Screen name="Home" component={HomeScreen} />
+        </>
+      )}
+    </Stack.Navigator>
   );
 };
 
