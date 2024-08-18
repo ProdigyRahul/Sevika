@@ -396,8 +396,41 @@ export const createApproval: RequestHandler = async (req, res) => {
 
 }
 
-export const updateApproval: RequestHandler = async (req, res) => {
+export const getApprovalByID: RequestHandler = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const approval = await Approval.findById(id);
 
+    if (!approval) {
+      return res.status(404).json({ message: "Approval not found" })
+    }
+
+    res.status(200).json({ message: "Approval retrieved successfully" });
+  }
+  catch (error) {
+    logger.error("Error finding Approval", error);
+    res.status(500).json({ message: "Error finding Approval" })
+
+  }
+}
+export const updateApproval: RequestHandler = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { motivation, referral, contribution } = req.body;
+
+    const update = await Approval.findByIdAndUpdate(
+      id,
+      { motivation, referral, contribution },
+      { new: true });
+
+    if (!update) {
+      return res.status(404).json({ message: "Approval not found" });
+    }
+  }
+  catch (error) {
+    logger.error("Error updating Approval", error);
+    res.status(500).json({ message: "Error updating Approval" })
+  }
 }
 
 
