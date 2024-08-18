@@ -433,6 +433,21 @@ export const updateApproval: RequestHandler = async (req, res) => {
   }
 }
 
+export const deleteApproval: RequestHandler = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedApproval = await Approval.findByIdAndDelete(id);
+
+    if (!deletedApproval) {
+      return res.status(404).json({ message: "Approval not found" })
+    }
+
+  }
+  catch (error) {
+    logger.error("Error deleting Approval", error);
+    res.status(500).json({ message: "Error deleting Approval" })
+  }
+}
 
 
 
