@@ -1,3 +1,4 @@
+
 import { Types } from "mongoose";
 import { RequestHandler } from "express";
 import jwt from "jsonwebtoken";
@@ -10,6 +11,7 @@ import config from "@/config/config";
 import { logger } from "@/config/logger";
 import cloudinary from "@/config/cloudinary";
 import { RequestWithFiles } from "@/middlewares/fileParser.middleware";
+import Approval from "@/models/approval.model";
 
 export const googleSignInController: RequestHandler = async (req, res) => {
   try {
@@ -360,9 +362,7 @@ export const logoutController: RequestHandler = async (req, res) => {
   res.status(200).json({ message: "Logged out successfully" });
 };
 
-export const candidateapproval: RequestHandler = async (req, res) => {
-  const { status } = req.body;
-};
+
 
 export const isCompletedProfile: RequestHandler = async (req, res) => {
   const { userId } = req.body;
@@ -372,3 +372,34 @@ export const isCompletedProfile: RequestHandler = async (req, res) => {
   }
   res.status(200).json({ isCompletedProfile: user.isCompletedProfile });
 };
+
+//Candidate Approval
+export const createApproval: RequestHandler = async (req, res) => {
+
+  try {
+    const { motivation, referral, contribution } = req.body;
+
+    const newApproval = new Approval({
+      motivation,
+      referral,
+      contribution
+    });
+
+    await newApproval.save();
+
+    res.status(201).json({ message: "Approval created successfully", approval: newApproval });
+  }
+  catch (error) {
+    logger.error("Error creating approval", error);
+    res.status(500).json({ message: "Error creating approval" });
+  }
+
+}
+
+export const updateApproval: RequestHandler = async (req, res) => {
+
+}
+
+
+
+
