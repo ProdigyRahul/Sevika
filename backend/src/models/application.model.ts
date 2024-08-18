@@ -19,4 +19,5 @@ const ApplicationSchema: Schema = new Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-export default mongoose.model<IApplication>("Application", ApplicationSchema);
+const Application = mongoose.model<IApplication>("Application", ApplicationSchema);
+export default Application;

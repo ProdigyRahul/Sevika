@@ -1,6 +1,7 @@
+import { IApplication } from './../models/application.model';
 
 import { Types } from "mongoose";
-import { RequestHandler } from "express";
+import { application, RequestHandler } from "express";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import User, { IUser } from "@/models/user.model";
@@ -12,6 +13,7 @@ import { logger } from "@/config/logger";
 import cloudinary from "@/config/cloudinary";
 import { RequestWithFiles } from "@/middlewares/fileParser.middleware";
 import Approval from "@/models/approval.model";
+import Application from './../models/application.model';
 
 export const googleSignInController: RequestHandler = async (req, res) => {
   try {
@@ -446,6 +448,33 @@ export const deleteApproval: RequestHandler = async (req, res) => {
   catch (error) {
     logger.error("Error deleting Approval", error);
     res.status(500).json({ message: "Error deleting Approval" })
+  }
+}
+
+export const updateApplicationStatus: RequestHandler = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const status = req.body;
+
+    const validStatuses = ["Pending", "Approved", "Rejected"];
+    if (!validStatuses.includes(status)) {
+      return res.status(400).json({ message: "Invalid status value" });
+    }
+    const updateStatus = await Application.findByIdAndUpdate(
+      id,
+      { status },
+      { new: true },
+    )
+
+    if (!updateStatus) {
+      return res.status(500).json({ message: "Application Not Found" });
+    }
+
+    res.status(200).json({ message: "Application Status updated successfully", application });
+  }
+  catch (error) {
+    logger.error("Error updating Application Status");
+    res.status(500).json({ message: "Error updating Application Status" });
   }
 }
 
