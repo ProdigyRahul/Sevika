@@ -17,6 +17,7 @@ import {deviceWidth} from '../constants/Scaling';
 import {useAuth} from '../hooks/useAuth';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {useNavigation} from '@react-navigation/native';
+const IndianFlag = require('../assets/images/indian-flag.jpg');
 
 const CompleteProfileScreen = () => {
   const navigation = useNavigation();
@@ -28,6 +29,7 @@ const CompleteProfileScreen = () => {
   const [userType, setUserType] = useState('');
   const [profileImage, setProfileImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [focusedInput, setFocusedInput] = useState(null);
 
   useEffect(() => {
     if (userData) {
@@ -80,7 +82,6 @@ const CompleteProfileScreen = () => {
         userType,
       };
 
-      // Only include profileImage if it's been selected and it's not a Google user
       if (profileImage && !userData.googleId) {
         profileData.profileImage = {
           uri: profileImage.uri,
@@ -110,6 +111,14 @@ const CompleteProfileScreen = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleInputFocus = inputName => {
+    setFocusedInput(inputName);
+  };
+
+  const handleInputBlur = () => {
+    setFocusedInput(null);
   };
 
   const isGoogleUser = userData && userData.googleId;
@@ -142,39 +151,70 @@ const CompleteProfileScreen = () => {
           <TextInput
             placeholder="First Name"
             placeholderTextColor={defaultColors.gray}
-            style={styles.input}
+            style={[
+              styles.input,
+              focusedInput === 'firstName' && styles.inputFocused,
+            ]}
             value={firstName}
             onChangeText={setFirstName}
             editable={!isGoogleUser}
+            onFocus={() => handleInputFocus('firstName')}
+            onBlur={handleInputBlur}
           />
           <TextInput
             placeholder="Last Name"
             placeholderTextColor={defaultColors.gray}
-            style={styles.input}
+            style={[
+              styles.input,
+              focusedInput === 'lastName' && styles.inputFocused,
+            ]}
             value={lastName}
             onChangeText={setLastName}
             editable={!isGoogleUser}
+            onFocus={() => handleInputFocus('lastName')}
+            onBlur={handleInputBlur}
           />
-          <TextInput
-            placeholder="Phone Number"
-            placeholderTextColor={defaultColors.gray}
-            style={styles.input}
-            value={phoneNumber}
-            onChangeText={setPhoneNumber}
-            keyboardType="phone-pad"
-          />
+          <View
+            style={[
+              styles.phoneInputContainer,
+              focusedInput === 'phoneNumber' && styles.inputFocused,
+            ]}>
+            <Image source={IndianFlag} style={styles.flagIcon} />
+            <Text style={styles.countryCode}>+91</Text>
+            <TextInput
+              placeholder="Phone Number"
+              placeholderTextColor={defaultColors.gray}
+              style={styles.phoneInput}
+              value={phoneNumber}
+              onChangeText={setPhoneNumber}
+              keyboardType="phone-pad"
+              onFocus={() => handleInputFocus('phoneNumber')}
+              onBlur={handleInputBlur}
+            />
+          </View>
           <TextInput
             placeholder="City"
             placeholderTextColor={defaultColors.gray}
-            style={styles.input}
+            style={[
+              styles.input,
+              focusedInput === 'city' && styles.inputFocused,
+            ]}
             value={city}
             onChangeText={setCity}
+            onFocus={() => handleInputFocus('city')}
+            onBlur={handleInputBlur}
           />
-          <View style={styles.pickerContainer}>
+          <View
+            style={[
+              styles.pickerContainer,
+              focusedInput === 'userType' && styles.inputFocused,
+            ]}>
             <Picker
               selectedValue={userType}
               onValueChange={itemValue => setUserType(itemValue)}
-              style={styles.picker}>
+              style={styles.picker}
+              onFocus={() => handleInputFocus('userType')}
+              onBlur={handleInputBlur}>
               <Picker.Item label="Select User Type" value="" />
               <Picker.Item label="Volunteer" value="Volunteer" />
               <Picker.Item label="NGO" value="NGO" />
@@ -213,11 +253,24 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     marginBottom: 20,
   },
+  imagePickerContainer: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: '#F1F4FF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+    overflow: 'hidden',
+  },
   profileImage: {
     width: 100,
     height: 100,
     borderRadius: 50,
-    marginBottom: 20,
+  },
+  imagePickerText: {
+    color: defaultColors.gray,
+    textAlign: 'center',
   },
   inputContainer: {
     width: deviceWidth - 60,
@@ -235,6 +288,43 @@ const styles = StyleSheet.create({
     color: defaultColors.black,
     width: '100%',
   },
+  inputFocused: {
+    borderColor: defaultColors.primary,
+    borderWidth: 2,
+    shadowColor: defaultColors.primary,
+    shadowOffset: {width: 0, height: 0},
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 5,
+  },
+  phoneInputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F1F4FF',
+    height: 58,
+    marginBottom: 15,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#C7D0E1',
+    width: '100%',
+  },
+  flagIcon: {
+    width: 24,
+    height: 16,
+    marginLeft: 12,
+    marginRight: 8,
+  },
+  countryCode: {
+    fontSize: 16,
+    color: defaultColors.black,
+    marginRight: 8,
+  },
+  phoneInput: {
+    flex: 1,
+    fontSize: 16,
+    color: defaultColors.black,
+    padding: 12,
+  },
   pickerContainer: {
     backgroundColor: '#F1F4FF',
     borderRadius: 10,
@@ -242,6 +332,7 @@ const styles = StyleSheet.create({
     borderColor: '#C7D0E1',
     marginBottom: 15,
     width: '100%',
+    overflow: 'hidden',
   },
   picker: {
     height: 58,
@@ -267,24 +358,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textTransform: 'uppercase',
     letterSpacing: 1,
-  },
-  imagePickerContainer: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    backgroundColor: '#F1F4FF',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  profileImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-  },
-  imagePickerText: {
-    color: defaultColors.gray,
-    textAlign: 'center',
   },
 });
 
