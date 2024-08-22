@@ -454,29 +454,30 @@ export const deleteApproval: RequestHandler = async (req, res) => {
 export const updateApplicationStatus: RequestHandler = async (req, res) => {
   try {
     const { id } = req.params;
-    const status = req.body;
+    const { status } = req.body;
 
     const validStatuses = ["Pending", "Approved", "Rejected"];
     if (!validStatuses.includes(status)) {
       return res.status(400).json({ message: "Invalid status value" });
     }
-    const updateStatus = await Application.findByIdAndUpdate(
+
+    const updatedApplication = await Application.findByIdAndUpdate(
       id,
       { status },
-      { new: true },
-    )
+      { new: true }
+    );
 
-    if (!updateStatus) {
-      return res.status(500).json({ message: "Application Not Found" });
+    if (!updatedApplication) {
+      return res.status(404).json({ message: "Application Not Found" });
     }
 
-    res.status(200).json({ message: "Application Status updated successfully", application });
-  }
-  catch (error) {
-    logger.error("Error updating Application Status");
+    res.status(200).json({ message: "Application Status updated successfully", application: updatedApplication });
+  } catch (error) {
+    logger.error("Error updating Application Status", error);
     res.status(500).json({ message: "Error updating Application Status" });
   }
-}
+};
+
 
 
 
