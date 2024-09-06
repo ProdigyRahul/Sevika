@@ -27,7 +27,7 @@ export const AuthProvider = ({children}) => {
   const configureGoogleSignIn = async () => {
     await GoogleSignin.configure({
       webClientId:
-        '443401979985-jumir08cfrt97p2370p2f6qat6qifhu7.apps.googleusercontent.com',
+        '443401979985-jumir08cfrt97p23  70p2f6qat6qifhu7.apps.googleusercontent.com',
     });
   };
 

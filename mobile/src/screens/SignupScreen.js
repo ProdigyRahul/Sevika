@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   View,
   Text,
@@ -20,6 +20,7 @@ import Apple_Logo from '../assets/images/apple-logo.png';
 import {defaultColors} from '../constants/Colors';
 import {deviceWidth} from '../constants/Scaling';
 import {useAuth} from '../hooks/useAuth';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 const SignupScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -30,10 +31,20 @@ const SignupScreen = ({navigation}) => {
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [isConfirmPasswordFocused, setIsConfirmPasswordFocused] =
     useState(false);
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [confirmPasswordError, setConfirmPasswordError] = useState('');
   const {signup, googleSignIn} = useAuth();
 
   const scrollViewRef = useRef(null);
   const signUpButtonRef = useRef(null);
+
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '443401979985-jumir08cfrt97p2370p2f6qat6qifhu7.apps.googleusercontent.com',
+    });
+  }, []);
 
   const handleInputFocus = inputName => {
     if (inputName === 'email') setIsEmailFocused(true);
@@ -53,9 +64,30 @@ const SignupScreen = ({navigation}) => {
     if (inputName === 'confirmPassword') setIsConfirmPasswordFocused(false);
   };
 
+  const validateEmail = email => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  };
+
   const handleSignup = async () => {
+    setEmailError('');
+    setPasswordError('');
+    setConfirmPasswordError('');
+
+    if (!email.trim()) {
+      setEmailError('Email is required');
+      return;
+    }
+    if (!validateEmail(email)) {
+      setEmailError('Invalid email format');
+      return;
+    }
+    if (!password.trim()) {
+      setPasswordError('Password is required');
+      return;
+    }
     if (password !== confirmPassword) {
-      Alert.alert('Error', 'Passwords do not match');
+      setConfirmPasswordError('Passwords do not match');
       return;
     }
 
@@ -88,7 +120,7 @@ const SignupScreen = ({navigation}) => {
       await googleSignIn();
     } catch (error) {
       console.log('Google Sign-In Error:', error);
-      // Alert.alert('Google Sign-In Failed', error.message);
+      Alert.alert('Google Sign-In Failed', error.message);
     }
   };
 
@@ -119,6 +151,9 @@ const SignupScreen = ({navigation}) => {
               onFocus={() => handleInputFocus('email')}
               onBlur={() => handleInputBlur('email')}
             />
+            {emailError ? (
+              <Text style={styles.errorText}>{emailError}</Text>
+            ) : null}
             <TextInput
               placeholder="Password"
               placeholderTextColor={defaultColors.gray}
@@ -129,6 +164,9 @@ const SignupScreen = ({navigation}) => {
               onFocus={() => handleInputFocus('password')}
               onBlur={() => handleInputBlur('password')}
             />
+            {passwordError ? (
+              <Text style={styles.errorText}>{passwordError}</Text>
+            ) : null}
             <TextInput
               placeholder="Confirm Password"
               placeholderTextColor={defaultColors.gray}
@@ -142,6 +180,9 @@ const SignupScreen = ({navigation}) => {
               onFocus={() => handleInputFocus('confirmPassword')}
               onBlur={() => handleInputBlur('confirmPassword')}
             />
+            {confirmPasswordError ? (
+              <Text style={styles.errorText}>{confirmPasswordError}</Text>
+            ) : null}
             <TouchableOpacity
               ref={signUpButtonRef}
               style={styles.signUpButton}
@@ -317,6 +358,12 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     resizeMode: 'contain',
+  },
+  errorText: {
+    color: defaultColors.red,
+    fontSize: 14,
+    alignSelf: 'flex-start',
+    marginBottom: 10,
   },
 });
 

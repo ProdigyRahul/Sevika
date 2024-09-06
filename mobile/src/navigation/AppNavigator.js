@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useAuth} from '../hooks/useAuth';
 import LoadingScreen from '../screens/LoadingScreen';
-import HomeScreen from '../screens/HomeScreen';
+import TabNavigator from './TabNavigator';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/SignupScreen';
@@ -37,14 +37,14 @@ const AppNavigator = () => {
       {userData ? (
         <>
           {userData.isCompletedProfile ? (
-            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="MainApp" component={TabNavigator} />
           ) : (
             <>
               <Stack.Screen
                 name="CompleteProfile"
                 component={CompleteProfileScreen}
               />
-              <Stack.Screen name="Home" component={HomeScreen} />
+              <Stack.Screen name="MainApp" component={TabNavigator} />
             </>
           )}
         </>
@@ -58,7 +58,7 @@ const AppNavigator = () => {
             name="CompleteProfile"
             component={CompleteProfileScreen}
           />
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="MainApp" component={TabNavigator} />
         </>
       )}
     </Stack.Navigator>

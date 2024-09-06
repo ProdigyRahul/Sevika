@@ -1,5 +1,3 @@
-// src/utils/constants.js
-
 // API
 export const API_BASE_URL = 'http://172.20.10.3:8080/api/v1';
 
