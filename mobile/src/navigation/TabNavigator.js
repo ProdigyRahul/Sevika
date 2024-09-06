@@ -1,12 +1,18 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/Ionicons';
+import {Image} from 'react-native';
 import HomeScreen from '../screens/HomeScreen';
+import TaskScreen from '../screens/TaskScreen';
+import ExploreScreen from '../screens/ExploreScreen';
+import ChatListScreen from '../screens/ChatListScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import SearchScreen from '../screens/SearchScreen';
-import NotificationsScreen from '../screens/NotificationsScreen';
-import SettingsScreen from '../screens/SettingsScreen';
 import {defaultColors} from '../constants/Colors';
+
+import HomeIcon from '../assets/images/home.png';
+import TaskIcon from '../assets/images/list.png';
+import ExploreIcon from '../assets/images/compass.png';
+import ChatIcon from '../assets/images/chat.png';
+import ProfileIcon from '../assets/images/account.png';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,21 +21,34 @@ const TabNavigator = () => {
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarIcon: ({focused, color, size}) => {
-          let iconName;
+          let iconSource;
 
-          if (route.name === 'Home') {
-            iconName = focused ? 'home' : 'home-outline';
-          } else if (route.name === 'Search') {
-            iconName = focused ? 'search' : 'search-outline';
-          } else if (route.name === 'Notifications') {
-            iconName = focused ? 'notifications' : 'notifications-outline';
-          } else if (route.name === 'Profile') {
-            iconName = focused ? 'person' : 'person-outline';
-          } else if (route.name === 'Settings') {
-            iconName = focused ? 'settings' : 'settings-outline';
+          switch (route.name) {
+            case 'Home':
+              iconSource = HomeIcon;
+              break;
+            case 'Tasks':
+              iconSource = TaskIcon;
+              break;
+            case 'Explore':
+              iconSource = ExploreIcon;
+              break;
+            case 'Chat':
+              iconSource = ChatIcon;
+              break;
+            case 'Profile':
+              iconSource = ProfileIcon;
+              break;
+            default:
+              iconSource = null;
           }
 
-          return <Icon name={iconName} size={size} color={color} />;
+          return (
+            <Image
+              source={iconSource}
+              style={{width: size, height: size, tintColor: color}}
+            />
+          );
         },
         tabBarActiveTintColor: defaultColors.primary,
         tabBarInactiveTintColor: 'gray',
@@ -41,10 +60,10 @@ const TabNavigator = () => {
         headerShown: false,
       })}>
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Search" component={SearchScreen} />
-      <Tab.Screen name="Notifications" component={NotificationsScreen} />
+      <Tab.Screen name="Tasks" component={TaskScreen} />
+      <Tab.Screen name="Explore" component={ExploreScreen} />
+      <Tab.Screen name="Chat" component={ChatListScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
 };

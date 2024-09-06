@@ -1240,3 +1240,34 @@ Fri Sep 06 2024 09:24:10 [AttendX-Development] [33mwarn[39m: [33mEnvironment 
 Fri Sep 06 2024 09:24:10 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is properly configured.[39m
 Fri Sep 06 2024 09:24:10 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
 Fri Sep 06 2024 09:24:11 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Fri Sep 06 2024 10:35:35 [AttendX-Development] [33mwarn[39m: [33mVerification email sent successfully to 22cs042@charusat.edu.in[39m
+Fri Sep 06 2024 10:35:50 [AttendX-Development] [36minfo[39m: [36mAttempting to verify email for user 66da8d994b181aa4e959348f with token 477151[39m
+Fri Sep 06 2024 10:35:50 [AttendX-Development] [36minfo[39m: [36mEmail verified successfully for user 66da8d994b181aa4e959348f[39m
+Fri Sep 06 2024 10:39:42 [AttendX-Development] [33mwarn[39m: [33mVerification email sent successfully to 22cs042@charusat.edu.in[39m
+Fri Sep 06 2024 10:39:57 [AttendX-Development] [36minfo[39m: [36mAttempting to verify email for user 66da8e8f4b181aa4e9593499 with token 902271[39m
+Fri Sep 06 2024 10:39:57 [AttendX-Development] [36minfo[39m: [36mEmail verified successfully for user 66da8e8f4b181aa4e9593499[39m
+Fri Sep 06 2024 10:43:32 [AttendX-Development] [33mwarn[39m: [33mVerification email sent successfully to 22cs042@charusat.edu.in[39m
+Fri Sep 06 2024 10:43:44 [AttendX-Development] [36minfo[39m: [36mAttempting to verify email for user 66da8f774b181aa4e95934a3 with token 665153[39m
+Fri Sep 06 2024 10:43:45 [AttendX-Development] [36minfo[39m: [36mEmail verified successfully for user 66da8f774b181aa4e95934a3[39m
+Fri Sep 06 2024 10:44:36 [AttendX-Development] [36minfo[39m: [36mAttempting to verify email for user 66da8f774b181aa4e95934a3 with token 665153[39m
+Fri Sep 06 2024 10:44:36 [AttendX-Development] [33mwarn[39m: [33mInvalid or expired verification code for user 66da8f774b181aa4e95934a3[39m
+Fri Sep 06 2024 12:40:46 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable NODE_ENV is properly configured.[39m
+Fri Sep 06 2024 12:40:46 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PORT is properly configured.[39m
+Fri Sep 06 2024 12:40:46 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable MONGODB_URI is properly configured.[39m
+Fri Sep 06 2024 12:40:46 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_SECRET is properly configured.[39m
+Fri Sep 06 2024 12:40:46 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable JWT_EXPIRE is properly configured.[39m
+Fri Sep 06 2024 12:40:46 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_USER is properly configured.[39m
+Fri Sep 06 2024 12:40:46 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable EMAIL_PASS is properly configured.[39m
+Fri Sep 06 2024 12:40:46 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable OTP_EXPIRE is properly configured.[39m
+Fri Sep 06 2024 12:40:46 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable PASSWORD_RESET_LINK is properly configured.[39m
+Fri Sep 06 2024 12:40:46 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_NAME is properly configured.[39m
+Fri Sep 06 2024 12:40:46 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_KEY is properly configured.[39m
+Fri Sep 06 2024 12:40:46 [AttendX-Development] [33mwarn[39m: [33mEnvironment variable CLOUD_SECRET is properly configured.[39m
+Fri Sep 06 2024 12:40:46 [AttendX-Development] [36minfo[39m: [36mServer is running at http://localhost:8080[39m
+Fri Sep 06 2024 12:40:49 [AttendX-Development] [36minfo[39m: [36mDatabase Successfully Connected[39m
+Fri Sep 06 2024 12:47:15 [AttendX-Development] [33mwarn[39m: [33mVerification email sent successfully to 22cs042@charusat.edu.in[39m
+Fri Sep 06 2024 12:47:34 [AttendX-Development] [36minfo[39m: [36mAttempting to verify email for user 66daac76c77ee79130958ba9 with token 191786[39m
+Fri Sep 06 2024 12:47:34 [AttendX-Development] [36minfo[39m: [36mEmail verified successfully for user 66daac76c77ee79130958ba9[39m
+Fri Sep 06 2024 13:06:08 [AttendX-Development] [33mwarn[39m: [33mVerification email sent successfully to 22cs041@charusat.edu.in[39m
+Fri Sep 06 2024 13:06:26 [AttendX-Development] [36minfo[39m: [36mAttempting to verify email for user 66dab0d1c77ee79130958bb8 with token 407303[39m
+Fri Sep 06 2024 13:06:31 [AttendX-Development] [36minfo[39m: [36mEmail verified successfully for user 66dab0d1c77ee79130958bb8[39m
