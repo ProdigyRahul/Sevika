@@ -1,5 +1,5 @@
 // API
-export const API_BASE_URL = 'http://172.20.10.3:8080/api/v1';
+export const API_BASE_URL = 'http://192.168.11.202:8080/api/v1';
 
 // Typography
 export const FONT_SIZE = {

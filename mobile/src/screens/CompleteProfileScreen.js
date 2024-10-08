@@ -127,7 +127,8 @@ const CompleteProfileScreen = () => {
       const result = await completeProfile(profileData);
       if (result.success) {
         Alert.alert('Success', 'Profile completed successfully', [
-          {text: 'OK', onPress: () => navigation.replace('MainApp')},
+          {text: 'OK', onPress: () => console.log('Successfully Signup')},
+          ,
         ]);
       } else {
         Alert.alert(
