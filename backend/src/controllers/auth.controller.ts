@@ -1,5 +1,3 @@
-import { IApplication } from './../models/application.model';
-
 import { Types } from "mongoose";
 import { application, RequestHandler } from "express";
 import jwt from "jsonwebtoken";
@@ -12,8 +10,6 @@ import config from "@/config/config";
 import { logger } from "@/config/logger";
 import cloudinary from "@/config/cloudinary";
 import { RequestWithFiles } from "@/middlewares/fileParser.middleware";
-import Approval from "@/models/approval.model";
-import Application from './../models/application.model';
 
 export const googleSignInController: RequestHandler = async (req, res) => {
   try {
@@ -364,8 +360,6 @@ export const logoutController: RequestHandler = async (req, res) => {
   res.status(200).json({ message: "Logged out successfully" });
 };
 
-
-
 export const isCompletedProfile: RequestHandler = async (req, res) => {
   const { userId } = req.body;
   const user = await User.findById(userId);
@@ -374,110 +368,3 @@ export const isCompletedProfile: RequestHandler = async (req, res) => {
   }
   res.status(200).json({ isCompletedProfile: user.isCompletedProfile });
 };
-
-//Candidate Approval
-export const createApproval: RequestHandler = async (req, res) => {
-
-  try {
-    const { motivation, referral, contribution } = req.body;
-
-    const newApproval = new Approval({
-      motivation,
-      referral,
-      contribution
-    });
-
-    await newApproval.save();
-
-    res.status(201).json({ message: "Approval created successfully", approval: newApproval });
-  }
-  catch (error) {
-    logger.error("Error creating approval", error);
-    res.status(500).json({ message: "Error creating approval" });
-  }
-
-}
-
-export const getApprovalByID: RequestHandler = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const approval = await Approval.findById(id);
-
-    if (!approval) {
-      return res.status(404).json({ message: "Approval not found" })
-    }
-
-    res.status(200).json({ message: "Approval retrieved successfully" });
-  }
-  catch (error) {
-    logger.error("Error finding Approval", error);
-    res.status(500).json({ message: "Error finding Approval" })
-
-  }
-}
-export const updateApproval: RequestHandler = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { motivation, referral, contribution } = req.body;
-
-    const update = await Approval.findByIdAndUpdate(
-      id,
-      { motivation, referral, contribution },
-      { new: true });
-
-    if (!update) {
-      return res.status(404).json({ message: "Approval not found" });
-    }
-  }
-  catch (error) {
-    logger.error("Error updating Approval", error);
-    res.status(500).json({ message: "Error updating Approval" })
-  }
-}
-
-export const deleteApproval: RequestHandler = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const deletedApproval = await Approval.findByIdAndDelete(id);
-
-    if (!deletedApproval) {
-      return res.status(404).json({ message: "Approval not found" })
-    }
-
-  }
-  catch (error) {
-    logger.error("Error deleting Approval", error);
-    res.status(500).json({ message: "Error deleting Approval" })
-  }
-}
-
-export const updateApplicationStatus: RequestHandler = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { status } = req.body;
-
-    const validStatuses = ["Pending", "Approved", "Rejected"];
-    if (!validStatuses.includes(status)) {
-      return res.status(400).json({ message: "Invalid status value" });
-    }
-
-    const updatedApplication = await Application.findByIdAndUpdate(
-      id,
-      { status },
-      { new: true }
-    );
-
-    if (!updatedApplication) {
-      return res.status(404).json({ message: "Application Not Found" });
-    }
-
-    res.status(200).json({ message: "Application Status updated successfully", application: updatedApplication });
-  } catch (error) {
-    logger.error("Error updating Application Status", error);
-    res.status(500).json({ message: "Error updating Application Status" });
-  }
-};
-
-
-
-
