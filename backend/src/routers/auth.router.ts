@@ -11,11 +11,6 @@ import {
   googleSignInController,
   completeProfileController,
   isCompletedProfile,
-  createApproval,
-  getApprovalByID,
-  updateApproval,
-  deleteApproval,
-  updateApplicationStatus,
 } from "@/controllers/auth.controller";
 import fileParser from "@/middlewares/fileParser.middleware";
 
@@ -97,15 +92,5 @@ authRouter.post("/logout", logoutController);
  * @access Private
  */
 authRouter.post("/is-completed-profile", isCompletedProfile);
-
-authRouter.post("/create-approval", createApproval);
-
-authRouter.post("/get-approval-by-id", getApprovalByID);
-
-authRouter.post("/update-approval", updateApproval);
-
-authRouter.post("/delete-approval", deleteApproval);
-
-authRouter.post("/update-status", updateApplicationStatus);
 
 export default authRouter;
