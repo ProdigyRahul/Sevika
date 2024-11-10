@@ -1,34 +1,34 @@
-import React, {useEffect, useState} from 'react';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import React, { useEffect, useState } from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
+  Alert,
   Image,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
   TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView,
-  ScrollView,
-  Platform,
-  Alert,
+  View,
 } from 'react-native';
-import Wrapper from '../components/Wrapper';
 import Sevika_Logo from '../assets/images/Sevika-logo.png';
-import Google_Logo from '../assets/images/google-logo.png';
-import Facebook_Logo from '../assets/images/facebook-logo.png';
 import Apple_Logo from '../assets/images/apple-logo.png';
-import {defaultColors} from '../constants/Colors';
-import {deviceWidth} from '../constants/Scaling';
-import {useAuth} from '../hooks/useAuth';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import Facebook_Logo from '../assets/images/facebook-logo.png';
+import Google_Logo from '../assets/images/google-logo.png';
+import Wrapper from '../components/Wrapper';
+import { defaultColors } from '../constants/Colors';
+import { deviceWidth } from '../constants/Scaling';
+import { useAuth } from '../hooks/useAuth';
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const {login, googleSignIn} = useAuth();
+  const { login, googleSignIn } = useAuth();
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -81,7 +81,9 @@ const LoginScreen = ({navigation}) => {
         style={styles.keyboardAvoidingView}>
         <ScrollView
           contentContainerStyle={styles.scrollViewContent}
-          keyboardShouldPersistTaps="handled">
+          keyboardShouldPersistTaps="handled"
+          showsVerticalScrollIndicator={false}
+        >
           <Image source={Sevika_Logo} style={styles.logo} />
           <Text style={styles.headerText}>Login here</Text>
           <Text style={styles.subHeaderText}>
@@ -205,7 +207,7 @@ const styles = StyleSheet.create({
     borderColor: defaultColors.primary,
     borderWidth: 2,
     shadowColor: defaultColors.primary,
-    shadowOffset: {width: 0, height: 0},
+    shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.2,
     shadowRadius: 5,
     elevation: 5,
@@ -228,7 +230,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: defaultColors.primary,
-    shadowOffset: {width: 0, height: 4},
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 6,
     elevation: 8,
@@ -287,7 +289,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 5,

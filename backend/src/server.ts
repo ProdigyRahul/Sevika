@@ -1,11 +1,11 @@
+import "@/database";
+import compression from "compression";
+import cors from "cors";
 import express from "express";
 import "express-async-errors";
 import rateLimit from "express-rate-limit";
-import { logger, morganMiddleware } from "./config/logger";
 import helmet from "helmet";
-import compression from "compression";
-import cors from "cors";
-import "@/database";
+import { logger, morganMiddleware } from "./config/logger";
 import { errorHandler } from "./middlewares/error.middleware";
 import authRouter from "./routers/auth.router";
 
