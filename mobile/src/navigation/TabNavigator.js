@@ -1,26 +1,26 @@
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Image} from 'react-native';
-import HomeScreen from '../screens/HomeScreen';
-import TaskScreen from '../screens/TaskScreen';
-import ExploreScreen from '../screens/ExploreScreen';
+import { Image } from 'react-native';
+import { defaultColors } from '../constants/Colors';
 import ChatListScreen from '../screens/ChatListScreen';
+import ExploreScreen from '../screens/ExploreScreen';
+import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import {defaultColors} from '../constants/Colors';
+import TaskScreen from '../screens/TaskScreen';
 
+import ProfileIcon from '../assets/images/account.png';
+import ChatIcon from '../assets/images/chat.png';
+import ExploreIcon from '../assets/images/compass.png';
 import HomeIcon from '../assets/images/home.png';
 import TaskIcon from '../assets/images/list.png';
-import ExploreIcon from '../assets/images/compass.png';
-import ChatIcon from '../assets/images/chat.png';
-import ProfileIcon from '../assets/images/account.png';
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
-        tabBarIcon: ({focused, color, size}) => {
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
           let iconSource;
 
           switch (route.name) {
@@ -46,7 +46,7 @@ const TabNavigator = () => {
           return (
             <Image
               source={iconSource}
-              style={{width: size, height: size, tintColor: color}}
+              style={{ width: size, height: size, tintColor: color }}
             />
           );
         },

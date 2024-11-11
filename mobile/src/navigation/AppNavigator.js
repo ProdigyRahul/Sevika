@@ -1,18 +1,19 @@
-import React, {useEffect, useState} from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useAuth} from '../hooks/useAuth';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React, { useEffect, useState } from 'react';
+import { useAuth } from '../hooks/useAuth';
+import { ChatMessageScreen } from '../screens/ChatMessageScreen';
+import CompleteProfileScreen from '../screens/CompleteProfileScreen';
 import LoadingScreen from '../screens/LoadingScreen';
-import TabNavigator from './TabNavigator';
-import WelcomeScreen from '../screens/WelcomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/SignupScreen';
 import VerifyOTPScreen from '../screens/VerifyOTPScreen';
-import CompleteProfileScreen from '../screens/CompleteProfileScreen';
+import WelcomeScreen from '../screens/WelcomeScreen';
+import TabNavigator from './TabNavigator';
 
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
-  const {isLoading, userData, checkUserData} = useAuth();
+  const { isLoading, userData, checkUserData } = useAuth();
   const [isInitializing, setIsInitializing] = useState(true);
   const [showLoadingScreen, setShowLoadingScreen] = useState(true);
 
@@ -33,7 +34,7 @@ const AppNavigator = () => {
   }
 
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       {userData ? (
         <>
           {userData.isCompletedProfile ? (
@@ -45,6 +46,8 @@ const AppNavigator = () => {
                 component={CompleteProfileScreen}
               />
               <Stack.Screen name="MainApp" component={TabNavigator} />
+
+              <Stack.Screen name="ChatMessage" component={ChatMessageScreen} />
             </>
           )}
         </>
@@ -59,6 +62,7 @@ const AppNavigator = () => {
             component={CompleteProfileScreen}
           />
           <Stack.Screen name="MainApp" component={TabNavigator} />
+          <Stack.Screen name="ChatMessage" component={ChatMessageScreen} />
         </>
       )}
     </Stack.Navigator>
