@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   Image,
   ScrollView,
@@ -9,19 +9,19 @@ import {
   View,
 } from 'react-native';
 import Wrapper from '../components/Wrapper';
-import { defaultColors } from '../constants/Colors';
-import { deviceWidth } from '../constants/Scaling';
+import {defaultColors} from '../constants/Colors';
+import {deviceWidth} from '../constants/Scaling';
 
 const ExploreScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const categories = [
-    { id: 1, name: 'All' },
-    { id: 2, name: 'Education' },
-    { id: 3, name: 'Healthcare' },
-    { id: 4, name: 'Elder Care' },
-    { id: 5, name: 'Environment' },
+    {id: 1, name: 'All'},
+    {id: 2, name: 'Education'},
+    {id: 3, name: 'Healthcare'},
+    {id: 4, name: 'Elder Care'},
+    {id: 5, name: 'Environment'},
   ];
 
   const featuredNGOs = [
@@ -31,8 +31,8 @@ const ExploreScreen = () => {
       category: 'Education',
       rating: 4.8,
       volunteers: 250,
-      image: require('../assets/images/location.png'),
-      location: 'Mumbai, MH',
+      image: require('../assets/images/ngo1.jpg'),
+      location: 'Vadodara, GJ',
     },
     {
       id: 2,
@@ -40,8 +40,8 @@ const ExploreScreen = () => {
       category: 'Elder Care',
       rating: 4.9,
       volunteers: 180,
-      image: require('../assets/images/location.png'),
-      location: 'Delhi, DL',
+      image: require('../assets/images/ngo2.jpg'),
+      location: 'Vadodara, GJ',
     },
     {
       id: 3,
@@ -49,8 +49,8 @@ const ExploreScreen = () => {
       category: 'Environment',
       rating: 4.7,
       volunteers: 320,
-      image: require('../assets/images/location.png'),
-      location: 'Bangalore, KA',
+      image: require('../assets/images/ngo3.jpg'),
+      location: 'Vadodara, GJ',
     },
   ];
 
@@ -119,14 +119,15 @@ const ExploreScreen = () => {
               key={category.id}
               style={[
                 styles.categoryPill,
-                selectedCategory === category.name && styles.selectedCategoryPill,
+                selectedCategory === category.name &&
+                  styles.selectedCategoryPill,
               ]}
               onPress={() => setSelectedCategory(category.name)}>
               <Text
                 style={[
                   styles.categoryText,
                   selectedCategory === category.name &&
-                  styles.selectedCategoryText,
+                    styles.selectedCategoryText,
                 ]}>
                 {category.name}
               </Text>
@@ -235,7 +236,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     height: 50,
     shadowColor: defaultColors.primary,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
@@ -262,7 +263,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginRight: 10,
     shadowColor: defaultColors.primary,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
@@ -294,7 +295,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     width: deviceWidth * 0.7,
     shadowColor: defaultColors.primary,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
@@ -345,7 +346,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginBottom: 15,
     shadowColor: defaultColors.primary,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,

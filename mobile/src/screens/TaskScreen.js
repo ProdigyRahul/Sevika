@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   Image,
   ScrollView,
@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import Wrapper from '../components/Wrapper';
-import { defaultColors } from '../constants/Colors';
+import {defaultColors} from '../constants/Colors';
 
 const TaskScreen = () => {
   const [selectedTab, setSelectedTab] = useState('active');
@@ -69,7 +69,7 @@ const TaskScreen = () => {
     },
   ];
 
-  const getStatusColor = (status) => {
+  const getStatusColor = status => {
     switch (status) {
       case 'Upcoming':
         return '#FFB74D';
@@ -91,7 +91,7 @@ const TaskScreen = () => {
             <View
               style={[
                 styles.statusBadge,
-                { backgroundColor: getStatusColor(task.status) },
+                {backgroundColor: getStatusColor(task.status)},
               ]}>
               <Text style={styles.statusText}>{task.status}</Text>
             </View>
@@ -138,7 +138,7 @@ const TaskScreen = () => {
                 key={index}
                 style={[
                   styles.star,
-                  { color: index < task.rating ? '#FFB74D' : '#C7D0E1' },
+                  {color: index < task.rating ? '#FFB74D' : '#C7D0E1'},
                 ]}>
                 ★
               </Text>
@@ -187,8 +187,8 @@ const TaskScreen = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}>
         {selectedTab === 'active'
-          ? activeTasks.map((task) => renderTaskCard(task))
-          : completedTasks.map((task) => renderTaskCard(task, true))}
+          ? activeTasks.map(task => renderTaskCard(task))
+          : completedTasks.map(task => renderTaskCard(task, true))}
       </ScrollView>
     </Wrapper>
   );
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     padding: 15,
     shadowColor: defaultColors.primary,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,

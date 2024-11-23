@@ -4,11 +4,11 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native';
 import Wrapper from '../components/Wrapper';
-import { defaultColors } from '../constants/Colors';
-import { deviceWidth } from '../constants/Scaling';
+import {defaultColors} from '../constants/Colors';
+import {deviceWidth} from '../constants/Scaling';
 
 const HomeScreen = () => {
   const featuredOpportunities = [
@@ -36,10 +36,10 @@ const HomeScreen = () => {
   ];
 
   const categories = [
-    { id: 1, name: 'Education', count: 45 },
-    { id: 2, name: 'Elder Care', count: 32 },
-    { id: 3, name: 'Healthcare', count: 28 },
-    { id: 4, name: 'Environment', count: 23 },
+    {id: 1, name: 'Education', count: 45},
+    {id: 2, name: 'Elder Care', count: 32},
+    {id: 3, name: 'Healthcare', count: 28},
+    {id: 4, name: 'Environment', count: 23},
   ];
 
   return (
@@ -51,10 +51,10 @@ const HomeScreen = () => {
         <View style={styles.header}>
           <View>
             <Text style={styles.welcomeText}>Welcome back,</Text>
-            <Text style={styles.nameText}>Volunteer!</Text>
+            <Text style={styles.nameText}>Rahul!</Text>
           </View>
           <TouchableOpacity style={styles.notificationBadge}>
-            <Text style={styles.notificationCount}>3</Text>
+            <Text style={styles.notificationCount}>R</Text>
           </TouchableOpacity>
         </View>
 
@@ -65,11 +65,11 @@ const HomeScreen = () => {
             <Text style={styles.statLabel}>Tasks Completed</Text>
           </View>
           <View style={styles.statCard}>
-            <Text style={styles.statNumber}>48</Text>
+            <Text style={styles.statNumber}>125</Text>
             <Text style={styles.statLabel}>Hours Given</Text>
           </View>
           <View style={styles.statCard}>
-            <Text style={styles.statNumber}>5</Text>
+            <Text style={styles.statNumber}>8</Text>
             <Text style={styles.statLabel}>NGOs Helped</Text>
           </View>
         </View>
@@ -78,7 +78,7 @@ const HomeScreen = () => {
         <View style={styles.sectionContainer}>
           <Text style={styles.sectionTitle}>Featured Opportunities</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            {featuredOpportunities.map((opportunity) => (
+            {featuredOpportunities.map(opportunity => (
               <TouchableOpacity
                 key={opportunity.id}
                 style={styles.opportunityCard}>
@@ -102,10 +102,8 @@ const HomeScreen = () => {
         <View style={styles.sectionContainer}>
           <Text style={styles.sectionTitle}>Categories</Text>
           <View style={styles.categoriesGrid}>
-            {categories.map((category) => (
-              <TouchableOpacity
-                key={category.id}
-                style={styles.categoryCard}>
+            {categories.map(category => (
+              <TouchableOpacity key={category.id} style={styles.categoryCard}>
                 <Text style={styles.categoryName}>{category.name}</Text>
                 <Text style={styles.categoryCount}>{category.count} tasks</Text>
               </TouchableOpacity>
@@ -144,9 +142,9 @@ const styles = StyleSheet.create({
   },
   notificationBadge: {
     backgroundColor: defaultColors.primary,
-    width: 24,
-    height: 24,
-    borderRadius: 12,
+    width: 30,
+    height: 30,
+    borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -196,7 +194,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     width: deviceWidth * 0.75,
     shadowColor: defaultColors.primary,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
@@ -248,7 +246,7 @@ const styles = StyleSheet.create({
     padding: 15,
     width: (deviceWidth - 55) / 2,
     shadowColor: defaultColors.primary,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
